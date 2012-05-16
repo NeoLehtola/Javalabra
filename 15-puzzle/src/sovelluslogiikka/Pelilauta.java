@@ -74,8 +74,8 @@ public class Pelilauta {
      * @param napinLeveys
      * @return 
      */
-    public boolean siirraOikealle(int napinKorkeus, int napinLeveys) {
-        if (napinLeveys + 1 == leveys) {
+    protected boolean siirraOikealle(int napinKorkeus, int napinLeveys) {
+        if (napinLeveys + 1 >= leveys) {
             return false;
         }
         
@@ -88,19 +88,62 @@ public class Pelilauta {
         return false;
     }
     
-    private boolean siirraVasemmalle(int korkeus, int leveys) {
+    protected boolean siirraVasemmalle(int napinKorkeus, int napinLeveys) {
+        if (napinLeveys - 1 < 0) {
+            return false;
+        }
+        
+        if (lauta[napinKorkeus][napinLeveys - 1].getArvo() == -1) {
+            lauta[napinKorkeus][napinLeveys - 1] = lauta[napinKorkeus][napinLeveys];
+            lauta[napinKorkeus][napinLeveys] = new Nappula(-1);
+            return true;
+        }
+        
         return false;
     }
     
-    private boolean siirraYlos(int korkeus, int leveys) {
+    protected boolean siirraYlos(int napinKorkeus, int napinLeveys) {
+        if (napinKorkeus - 1 < 0) {
+            return false;
+        }
+        
+        if (lauta[napinKorkeus - 1][napinLeveys].getArvo() == -1) {
+            lauta[napinKorkeus - 1][napinLeveys] = lauta[napinKorkeus][napinLeveys];
+            lauta[napinKorkeus][napinLeveys] = new Nappula(-1);
+            return true;
+        }
+        
         return false;
     }
     
-    private boolean siirraAlas(int korkeus, int leveys) {
+    protected boolean siirraAlas(int napinKorkeus, int napinLeveys) {
+        if (napinKorkeus + 1 >= korkeus) {
+            return false;
+        }
+        
+        if (lauta[napinKorkeus + 1][napinLeveys].getArvo() == -1) {
+            lauta[napinKorkeus + 1][napinLeveys] = lauta[napinKorkeus][napinLeveys];
+            lauta[napinKorkeus][napinLeveys] = new Nappula(-1);
+            return true;
+        }
+        
         return false;
     }
     
-    public boolean teeSiirto(int korkeus, int leveys) {
+    public boolean teeSiirto(int napinKorkeus, int napinLeveys) {
+        if (siirraOikealle(napinKorkeus, napinLeveys)) {
+            return true;
+        }
+        if (siirraVasemmalle(napinKorkeus, napinLeveys)) {
+            return true;
+        }
+        if (siirraYlos(napinKorkeus, napinLeveys)) {
+            return true;
+        }
+        if (siirraAlas(napinKorkeus, napinLeveys)) {
+            return true;
+        }
+        
         return false;
     }
     

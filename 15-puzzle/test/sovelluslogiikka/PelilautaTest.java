@@ -79,5 +79,36 @@ public class PelilautaTest {
     public void siirraOikeallePalauttaaFalseKunOllaanReunassa() {
         assertFalse(pelilauta.siirraOikealle(3, 2));
     }
+    
+    @Test
+    public void siirraVasemmalleToimiiKunVasemmallaTyhjaa() {
+        pelilauta.siirraOikealle(3, 1);
+        assertTrue(pelilauta.siirraVasemmalle(3, 2));
+    }
+    
+    @Test
+    public void siirraVasemmallePalauttaaFalseKunOllaanReunassa() {
+        
+    }
+    
+    @Test
+    public void siirraYlosToimiiKunYlapuolellaTyhjaa() {
+        
+    }
+    
+    @Test
+    public void siirraYlosPalauttaaFalseKunOllaanYlareunassa() {
+        
+    }
+    
+    @Test
+    public void siirraAlasToimiiKunAlapuolellaTyhjaa() {
+        
+    }
+    
+    @Test
+    public void siirraAlasPalauttaaFalseKunOllaanAlareunassa() {
+        
+    }
 
 }
