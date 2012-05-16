@@ -10,6 +10,7 @@ public class NumeroNappula implements Nappula {
         this.arvo = arvo;
     }
 
+    @Override
     public int getArvo() {
         return arvo;
     }

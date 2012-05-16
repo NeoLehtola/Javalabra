@@ -25,7 +25,7 @@ public class PelilautaTest {
     
     @Before
     public void setUp() {
-      
+      pelilauta = new Pelilauta(4, 3);
     }
     
     @After
@@ -34,23 +34,40 @@ public class PelilautaTest {
     
     @Test
     public void eiVoiAntaaLiianPientaLeveytta() {
-        pelilauta = new Pelilauta(2, 8);
+
     }
     
     
     
     @Test
     public void alkuarvotOvatJarjestyksessa() {
-//        for (int i = 0; i < pelilauta.getSivunPituus(); i++) {
-//            for (int j = 0; j < pelilauta.getSivunPituus(); j++) {
-//                
-//            }
-//        }
+        int nro = 1;
+        for (int i = 0; i < pelilauta.getKorkeus(); i++) {
+            for (int j = 0; j < pelilauta.getLeveys(); j++) {
+                
+            }
+        }
+   
+
     }
     
     @Test
     public void alkuarvoistaViimeinenOnTyhja() {
-       
+       assertEquals(-1, pelilauta.getNappula(pelilauta.getKorkeus() - 1, pelilauta.getLeveys() - 1).getArvo());
+    }
+    
+    @Test
+    public void laudallaOnVainYksiTyhjaNappi() {
+        int tyhjia = 0;
+        
+        for (int i = 0; i < pelilauta.getKorkeus(); i++) {
+            for (int j = 0; j < pelilauta.getLeveys(); j++) {
+                if (pelilauta.getNappula(i, j).getArvo() == -1) {
+                    tyhjia++;
+                }
+            }
+        }
+        assertEquals(1, tyhjia);
     }
 
 }

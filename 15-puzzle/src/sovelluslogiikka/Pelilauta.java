@@ -47,6 +47,11 @@ public class Pelilauta {
     private void sekoitaNappulat() {
         Random r = new Random();
         
+        
+    }
+   
+    public Nappula getNappula(int korkeus, int leveys) {
+        return lauta[korkeus][leveys];
     }
     
 //    public int getArvo(int vaaka, int pysty) {
@@ -61,23 +66,40 @@ public class Pelilauta {
         return korkeus;
     }
     
-    private boolean siirraOikealle() {
+    /**
+     * parametreina annetaan siirrettävän nappulan NYKYINEN SIJAINTI;
+     * metodin täytyy tarkistaa, onko parametrina saadun nappulan oikealla puolella
+     * tyhjä nappi
+     * 
+     * @param siirrettavanKorkeus
+     * @param siirrettavanLeveys
+     * @return 
+     */
+    private boolean siirraOikealle(int siirrettavanKorkeus, int siirrettavanLeveys) {
+        if (siirrettavanKorkeus + 1 == korkeus) {
+            return false;
+        }
+        
+        if (lauta[siirrettavanKorkeus][siirrettavanLeveys + 1].getArvo() == -1) {
+            
+        }
+      
         return false;
     }
     
-    private boolean siirraVasemmalle() {
+    private boolean siirraVasemmalle(int korkeus, int leveys) {
         return false;
     }
     
-    private boolean siirraYlos() {
+    private boolean siirraYlos(int korkeus, int leveys) {
         return false;
     }
     
-    private boolean siirraAlas() {
+    private boolean siirraAlas(int korkeus, int leveys) {
         return false;
     }
     
-    public boolean teeSiirto() {
+    public boolean teeSiirto(int korkeus, int leveys) {
         return false;
     }
     
