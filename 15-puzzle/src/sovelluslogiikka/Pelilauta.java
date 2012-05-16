@@ -11,7 +11,7 @@ public class Pelilauta {
     private int leveys;
     private int korkeus;
     
-    public Pelilauta(int leveys, int korkeus) {
+    public Pelilauta(int korkeus, int leveys) {
        
         if (tarkistaOnkoSallittuAlkuarvo(leveys)) {
             this.leveys = leveys;
@@ -37,6 +37,7 @@ public class Pelilauta {
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
                 lauta[i][j] = new Nappula(nro);
+                nro++;
                 if (i == korkeus - 1 && j == leveys - 1) {
                     lauta[i][j] = new Nappula(-1);
                 }
@@ -54,9 +55,7 @@ public class Pelilauta {
         return lauta[korkeus][leveys];
     }
     
-//    public int getArvo(int vaaka, int pysty) {
-//        return lauta[vaaka][pysty];
-//    }
+
     
     public int getLeveys() {
         return leveys;
@@ -71,17 +70,19 @@ public class Pelilauta {
      * metodin täytyy tarkistaa, onko parametrina saadun nappulan oikealla puolella
      * tyhjä nappi
      * 
-     * @param siirrettavanKorkeus
-     * @param siirrettavanLeveys
+     * @param napinKorkeus
+     * @param napinLeveys
      * @return 
      */
-    private boolean siirraOikealle(int siirrettavanKorkeus, int siirrettavanLeveys) {
-        if (siirrettavanKorkeus + 1 == korkeus) {
+    public boolean siirraOikealle(int napinKorkeus, int napinLeveys) {
+        if (napinLeveys + 1 == leveys) {
             return false;
         }
         
-        if (lauta[siirrettavanKorkeus][siirrettavanLeveys + 1].getArvo() == -1) {
-            
+        if (lauta[napinKorkeus][napinLeveys + 1].getArvo() == -1) {
+            lauta[napinKorkeus][napinLeveys + 1] = lauta[napinKorkeus][napinLeveys];
+            lauta[napinKorkeus][napinLeveys] = new Nappula(-1);
+            return true;
         }
       
         return false;

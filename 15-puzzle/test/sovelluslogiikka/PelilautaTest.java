@@ -69,5 +69,15 @@ public class PelilautaTest {
         }
         assertEquals(1, tyhjia);
     }
+    
+    @Test
+    public void siirraOikealleToimiiKunOikeallaTyhjaa() {
+        assertTrue(pelilauta.siirraOikealle(3, 1));
+    }
+    
+    @Test
+    public void siirraOikeallePalauttaaFalseKunOllaanReunassa() {
+        assertFalse(pelilauta.siirraOikealle(3, 2));
+    }
 
 }
