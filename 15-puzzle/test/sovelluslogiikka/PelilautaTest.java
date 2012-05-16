@@ -42,7 +42,7 @@ public class PelilautaTest {
     }
     
     @Test
-    public void alkuarvoistaViimeinenOnNolla() {
+    public void alkuarvoistaViimeinenOnTyhja() {
        
     }
 

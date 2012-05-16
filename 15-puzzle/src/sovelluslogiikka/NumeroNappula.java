@@ -1,13 +1,19 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sovelluslogiikka;
 
-/**
- *
- * @author neom
- */
-public class NumeroNappula {
+
+public class NumeroNappula implements Nappula {
+    
+    private int arvo;
+    
+    public NumeroNappula(int arvo) {
+        this.arvo = arvo;
+    }
+
+    public int getArvo() {
+        return arvo;
+    }
+    
+    
     
 }
