@@ -20,9 +20,9 @@ public class Pelilauta {
         int nro = 1;
         for (int i = 0; i < sivunPituus; i++) {
             for (int j = 0; j < sivunPituus; j++) {
-                lauta[i][j] = new Nappula(i, j, nro);
+                lauta[i][j] = new NumeroNappula(nro);
                 if (i == sivunPituus - 1 && j == sivunPituus - 1) {
-                    lauta[i][j] = new Nappula(i, j, 0);
+                    lauta[i][j] = new TyhjaNappula();
                 }
             }
         }
