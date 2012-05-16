@@ -1,9 +1,23 @@
 
 package sovelluslogiikka;
 
-public interface Nappula {
+public class Nappula {
 
-    public int getArvo();
+    private int arvo;
+    
+    public Nappula(int arvo) {
+        this.arvo = arvo;
+    }
+
+    public int getArvo() {
+        return arvo;
+    }
+
+    public void setArvo(int arvo) {
+        this.arvo = arvo;
+    }
+    
+    
 
     
     

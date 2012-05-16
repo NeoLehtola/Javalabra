@@ -36,9 +36,9 @@ public class Pelilauta {
         int nro = 1;
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
-                lauta[i][j] = new NumeroNappula(nro);
+                lauta[i][j] = new Nappula(nro);
                 if (i == korkeus - 1 && j == leveys - 1) {
-                    lauta[i][j] = new TyhjaNappula();
+                    lauta[i][j] = new Nappula(-1);
                 }
             }
         }
