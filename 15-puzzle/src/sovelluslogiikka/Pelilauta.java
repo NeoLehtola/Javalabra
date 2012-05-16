@@ -6,22 +6,38 @@ import java.util.Random;
 public class Pelilauta {
     
     private Nappula[][] lauta;
-    private int sivunPituus;
+    private final int SIVUNALARAJA = 3;
+    private final int SIVUNYLARAJA = 8;
+    private int leveys;
+    private int korkeus;
     
-    public Pelilauta(int sivunPituus) {
-        this.sivunPituus = sivunPituus;
-        lauta = new Nappula[sivunPituus][sivunPituus];
+    public Pelilauta(int leveys, int korkeus) {
+       
+        if (tarkistaOnkoSallittuAlkuarvo(leveys)) {
+            this.leveys = leveys;
+        }
+        if (tarkistaOnkoSallittuAlkuarvo(korkeus)) {
+            this.korkeus = korkeus;
+        }
+        
+        lauta = new Nappula[korkeus][leveys];
         AsetaNumerotJarjestykseenJaJataViimeinenTyhjaksi();
+    }
+    
+    
+    private boolean tarkistaOnkoSallittuAlkuarvo(int sivu) {
+        return SIVUNALARAJA <= sivu && sivu <= SIVUNYLARAJA;
+                 
     }
     
     // tee yhteismetodi, joka asettaa alkutilan ja sitten sekoittaa, 
     // ja kutsu sitä konstruktorissa.
     private void AsetaNumerotJarjestykseenJaJataViimeinenTyhjaksi() {
         int nro = 1;
-        for (int i = 0; i < sivunPituus; i++) {
-            for (int j = 0; j < sivunPituus; j++) {
+        for (int i = 0; i < korkeus; i++) {
+            for (int j = 0; j < leveys; j++) {
                 lauta[i][j] = new NumeroNappula(nro);
-                if (i == sivunPituus - 1 && j == sivunPituus - 1) {
+                if (i == korkeus - 1 && j == leveys - 1) {
                     lauta[i][j] = new TyhjaNappula();
                 }
             }
@@ -37,8 +53,12 @@ public class Pelilauta {
 //        return lauta[vaaka][pysty];
 //    }
     
-    public int getSivunPituus() {
-        return sivunPituus;
+    public int getLeveys() {
+        return leveys;
+    }
+    
+    public int getKorkeus() {
+        return korkeus;
     }
     
     private boolean siirraOikealle() {

@@ -25,12 +25,19 @@ public class PelilautaTest {
     
     @Before
     public void setUp() {
-        pelilauta = new Pelilauta(4);
+      
     }
     
     @After
     public void tearDown() {
     }
+    
+    @Test
+    public void eiVoiAntaaLiianPientaLeveytta() {
+        pelilauta = new Pelilauta(2, 8);
+    }
+    
+    
     
     @Test
     public void alkuarvotOvatJarjestyksessa() {
