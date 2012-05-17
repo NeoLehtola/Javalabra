@@ -30,14 +30,11 @@ public class Pelilauta {
             }
         }
     }
-    
-
-   
+       
     public Nappula getNappula(int korkeus, int leveys) {
         return lauta[korkeus][leveys];
     }
-    
-  
+      
     public int getLeveys() {
         return leveys;
     }
@@ -46,12 +43,6 @@ public class Pelilauta {
         return korkeus;
     }
     
-
-
-
-
- 
-
     public Nappula[][] getLauta() {
         return lauta;
     }

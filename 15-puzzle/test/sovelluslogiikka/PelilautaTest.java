@@ -32,25 +32,34 @@ public class PelilautaTest {
     public void tearDown() {
     }
 
-//    @Test
-//    public void eiVoiAntaaLiianPientaLeveytta() {
-//    }
-//
-//    @Test
-//    public void vaaranKokoistaPelilautaaEiVoiLuoda() {
-//        pelilauta = new Pelilauta(2, 2);
-//    }
+    @Test
+    public void kaikissaRuuduissaOnNappula() {
+        for (int i = 0; i < pelilauta.getKorkeus(); i++) {
+            for (int j = 0; j < pelilauta.getLeveys(); j++) {
+                assertNotNull(pelilauta.getNappula(i, j));
+                
+            }
+        }
+    }
+    
+    @Test
+    public void numerointiAlkaaYkkosesta() {
+        assertEquals(1, pelilauta.getNappula(0, 0).getArvo());
+    }
 
-//    @Test
-//    public void alkuarvotOvatJarjestyksessa() {
-//        int nro = 1;
-//        for (int i = 0; i < pelilauta.getKorkeus(); i++) {
-//            for (int j = 0; j < pelilauta.getLeveys(); j++) {
-//            }
-//        }
-//
-//
-//    }
+    @Test
+    public void alkuarvotOvatJarjestyksessa() {
+        int nro = 1;
+        for (int i = 0; i < pelilauta.getKorkeus(); i++) {
+            for (int j = 0; j < pelilauta.getLeveys(); j++) {
+                if (i == pelilauta.getKorkeus() - 1 && j == pelilauta.getLeveys() - 1) {
+                    return;
+                }
+                assertEquals(nro, pelilauta.getNappula(i, j).getArvo());
+                nro++;
+            }
+        }
+    }
 
     @Test
     public void alkuarvoistaViimeinenOnTyhja() {
@@ -70,55 +79,4 @@ public class PelilautaTest {
         }
         assertEquals(1, tyhjia);
     }
-
-//    @Test
-//    public void lautaSekoittuuAlussa() {
-//    }
-
-//    @Test
-//    public void siirraOikealleToimiiKunOikeallaTyhjaa() {
-//        assertTrue(pelilauta.siirraOikealle(3, 1));
-//    }
-//
-//    @Test
-//    public void siirraOikeallePalauttaaFalseKunOllaanReunassa() {
-//        assertFalse(pelilauta.siirraOikealle(3, 2));
-//    }
-//
-//    @Test
-//    public void siirraVasemmalleToimiiKunVasemmallaTyhjaa() {
-//        pelilauta.siirraOikealle(3, 1);
-//        assertTrue(pelilauta.siirraVasemmalle(3, 2));
-//    }
-//
-//    @Test
-//    public void siirraVasemmallePalauttaaFalseKunOllaanReunassa() {
-//        assertFalse(pelilauta.siirraVasemmalle(3, 0));
-//    }
-
-//    @Test
-//    public void siirraYlosToimiiKunYlapuolellaTyhjaa() {
-//    }
-//
-//    @Test
-//    public void siirraYlosPalauttaaFalseKunOllaanYlareunassa() {
-//    }
-//
-//    @Test
-//    public void siirraAlasToimiiKunAlapuolellaTyhjaa() {
-//    }
-//
-//    @Test
-//    public void siirraAlasPalauttaaFalseKunOllaanAlareunassa() {
-//    }
-
-//    @Test
-//    public void teeSiirtoSiirtaaNappiaJosVieressaOnTyhjaa() {
-//        assertTrue(pelilauta.teeSiirto(3, 1));
-//    }
-//
-//    @Test
-//    public void nappiaEiVoiSiirtaaJosVieressaEiOleTyhjaa() {
-//        assertFalse(pelilauta.teeSiirto(1, 1));
-//    }
 }
