@@ -28,27 +28,78 @@ public class PelilaudanKayttajaTest {
 
     @Before
     public void setUp() {
-        kayttaja = new PelilaudanKayttaja(4, 3);
+        kayttaja = new PelilaudanKayttaja(4, 3, 0);
     }
 
     @After
     public void tearDown() {
     }
 
-    
-
     @Test
     public void lautaSekoittuuAlussa() {
+        kayttaja = new PelilaudanKayttaja(4, 3, 10000);
         assertFalse(kayttaja.lautaValmis());
     }
 
     @Test
     public void teeSiirtoSiirtaaNappiaJosVieressaOnTyhjaa() {
-        
+    }
+
+    @Test
+    public void teeSiirtoEiJataSiirtamattaJosVieressaTyhjaa() {
     }
 
     @Test
     public void nappiaEiVoiSiirtaaJosVieressaEiOleTyhjaa() {
-        
+    }
+
+    @Test
+    public void lautaValmisTestaaNumerotOikein() {
+    }
+
+    @Test
+    public void lautaValmisEiPaastaLapiMelkeinValmista() {
+    }
+
+    @Test
+    public void siirraOikealleToimiiKunOikeallaTyhjaa() {
+        assertTrue(kayttaja.siirraOikealle(3, 1));
+
+    }
+
+    @Test
+    public void siirraOikeallePalauttaaFalseKunOllaanReunassa() {
+        assertFalse(kayttaja.siirraOikealle(3, 2));
+
+    }
+
+    @Test
+    public void siirraVasemmalleToimiiKunVasemmallaTyhjaa() {
+        kayttaja.siirraOikealle(3, 1);
+
+        assertTrue(kayttaja.siirraVasemmalle(3, 2));
+
+    }
+
+    @Test
+    public void siirraVasemmallePalauttaaFalseKunOllaanReunassa() {
+        assertFalse(kayttaja.siirraVasemmalle(3, 0));
+
+    }
+
+    @Test
+    public void siirraYlosToimiiKunYlapuolellaTyhjaa() {
+    }
+
+    @Test
+    public void siirraYlosPalauttaaFalseKunOllaanYlareunassa() {
+    }
+
+    @Test
+    public void siirraAlasToimiiKunAlapuolellaTyhjaa() {
+    }
+
+    @Test
+    public void siirraAlasPalauttaaFalseKunOllaanAlareunassa() {
     }
 }
