@@ -1,12 +1,13 @@
 
 package kayttoliittyma;
 
-import sovelluslogiikka.Pelilauta;
+import sovelluslogiikka.PelilaudanKayttaja;
 
 public class Tekstikayttoliittyma {
     
     public static void main(String[] args) {
-        Pelilauta p = new Pelilauta(2,3);
+        PelilaudanKayttaja k = new PelilaudanKayttaja(4, 3);
+        k.teeSiirto(3, 1);
 
     }
     

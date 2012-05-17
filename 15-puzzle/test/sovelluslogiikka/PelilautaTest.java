@@ -81,7 +81,7 @@ public class PelilautaTest {
 
     @Test
     public void numerointiAlkaaYkkosesta() {
-        assertEquals(1, pelilauta.getNappula(0, 0).getArvo());
+        assertEquals(1, pelilauta.getNappula(0, 0).getTunniste());
     }
 
     @Test
@@ -92,7 +92,7 @@ public class PelilautaTest {
                 if (i == pelilauta.getKorkeus() - 1 && j == pelilauta.getLeveys() - 1) {
                     return;
                 }
-                assertEquals(nro, pelilauta.getNappula(i, j).getArvo());
+                assertEquals(nro, pelilauta.getNappula(i, j).getTunniste());
                 nro++;
             }
         }
@@ -100,7 +100,7 @@ public class PelilautaTest {
 
     @Test
     public void alkuarvoistaViimeinenOnTyhja() {
-        assertEquals(-1, pelilauta.getNappula(pelilauta.getKorkeus() - 1, pelilauta.getLeveys() - 1).getArvo());
+        assertEquals(-1, pelilauta.getNappula(pelilauta.getKorkeus() - 1, pelilauta.getLeveys() - 1).getTunniste());
     }
 
     @Test
@@ -109,7 +109,7 @@ public class PelilautaTest {
 
         for (int i = 0; i < pelilauta.getKorkeus(); i++) {
             for (int j = 0; j < pelilauta.getLeveys(); j++) {
-                if (pelilauta.getNappula(i, j).getArvo() == -1) {
+                if (pelilauta.getNappula(i, j).getTunniste() == -1) {
                     tyhjia++;
                 }
             }

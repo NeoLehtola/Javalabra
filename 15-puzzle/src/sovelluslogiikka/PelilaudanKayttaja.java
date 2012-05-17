@@ -37,7 +37,7 @@ public class PelilaudanKayttaja extends Pelilauta {
             return false;
         }
         
-        if (getLauta()[napinKorkeus][napinLeveys + 1].getArvo() == -1) {
+        if (getLauta()[napinKorkeus][napinLeveys + 1].getTunniste() == -1) {
             getLauta()[napinKorkeus][napinLeveys + 1] = getLauta()[napinKorkeus][napinLeveys];
             getLauta()[napinKorkeus][napinLeveys] = new Nappula(-1);
             return true;
@@ -51,7 +51,7 @@ public class PelilaudanKayttaja extends Pelilauta {
             return false;
         }
         
-        if (getLauta()[napinKorkeus][napinLeveys - 1].getArvo() == -1) {
+        if (getLauta()[napinKorkeus][napinLeveys - 1].getTunniste() == -1) {
             getLauta()[napinKorkeus][napinLeveys - 1] = getLauta()[napinKorkeus][napinLeveys];
             getLauta()[napinKorkeus][napinLeveys] = new Nappula(-1);
             return true;
@@ -65,7 +65,7 @@ public class PelilaudanKayttaja extends Pelilauta {
             return false;
         }
         
-        if (getLauta()[napinKorkeus - 1][napinLeveys].getArvo() == -1) {
+        if (getLauta()[napinKorkeus - 1][napinLeveys].getTunniste() == -1) {
             getLauta()[napinKorkeus - 1][napinLeveys] = getLauta()[napinKorkeus][napinLeveys];
             getLauta()[napinKorkeus][napinLeveys] = new Nappula(-1);
             return true;
@@ -79,7 +79,7 @@ public class PelilaudanKayttaja extends Pelilauta {
             return false;
         }
         
-        if (getLauta()[napinKorkeus + 1][napinLeveys].getArvo() == -1) {
+        if (getLauta()[napinKorkeus + 1][napinLeveys].getTunniste() == -1) {
             getLauta()[napinKorkeus + 1][napinLeveys] = getLauta()[napinKorkeus][napinLeveys];
             getLauta()[napinKorkeus][napinLeveys] = new Nappula(-1);
             return true;
@@ -105,8 +105,22 @@ public class PelilaudanKayttaja extends Pelilauta {
         return false;
     }
     
-
+   
     public boolean lautaValmis() {
-        return false;
+        int nro = 1;
+        for (int i = 0; i < getKorkeus(); i++) {
+            for (int j = 0; j < getLeveys(); j++) {
+                if (i == getKorkeus() - 1 && j == getLeveys() - 1) {
+                    return true;
+                }
+                
+                if (getNappula(i, j).getTunniste() != nro) {
+                    return false;
+                }
+                nro++;
+            }
+        }
+        
+        return true;
     }
 }

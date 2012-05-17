@@ -1,6 +1,11 @@
 package sovelluslogiikka;
 
 public class Pelilauta {
+    
+    /*
+     * Tämänhetkinen työnjako: Pelilauta on yliluokka, ja se luo laudan ja antaa alkuarvot,
+     * mutta ei tiedä sekoituksista ja siirroista mitään. Aliluokka hoitaa nämä.
+     */
 
     private Nappula[][] lauta;
     private int leveys;

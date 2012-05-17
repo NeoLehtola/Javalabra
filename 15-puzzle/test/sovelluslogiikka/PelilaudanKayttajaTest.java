@@ -12,7 +12,9 @@ import static org.junit.Assert.*;
  * @author neom
  */
 public class PelilaudanKayttajaTest {
-    
+
+    private PelilaudanKayttaja kayttaja;
+
     public PelilaudanKayttajaTest() {
     }
 
@@ -23,48 +25,45 @@ public class PelilaudanKayttajaTest {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-    
+
     @Before
     public void setUp() {
+        kayttaja = new PelilaudanKayttaja(4, 3);
     }
-    
+
     @After
     public void tearDown() {
     }
-//    @Test
-//    public void eiVoiAntaaLiianPientaLeveytta() {
-//    }
-//
-//    @Test
-//    public void vaaranKokoistaPelilautaaEiVoiLuoda() {
-//        pelilauta = new Pelilauta(2, 2);
-//    }
+
     
-    //    @Test
-//    public void lautaSekoittuuAlussa() {
-//    }
+    /*
+     * Huom. testimetodit ei toimi, koska ne on kirjoitettu sekoittamattomalle
+     * laudalle. Korjaan asap.
+     */
+    @Test
+    public void lautaSekoittuuAlussa() {
+        assertFalse(kayttaja.lautaValmis());
+    }
+    @Test
+    public void siirraOikealleToimiiKunOikeallaTyhjaa() {
+        assertTrue(kayttaja.siirraOikealle(3, 1));
+    }
 
-//    @Test
-//    public void siirraOikealleToimiiKunOikeallaTyhjaa() {
-//        assertTrue(pelilauta.siirraOikealle(3, 1));
-//    }
-//
-//    @Test
-//    public void siirraOikeallePalauttaaFalseKunOllaanReunassa() {
-//        assertFalse(pelilauta.siirraOikealle(3, 2));
-//    }
-//
-//    @Test
-//    public void siirraVasemmalleToimiiKunVasemmallaTyhjaa() {
-//        pelilauta.siirraOikealle(3, 1);
-//        assertTrue(pelilauta.siirraVasemmalle(3, 2));
-//    }
-//
-//    @Test
-//    public void siirraVasemmallePalauttaaFalseKunOllaanReunassa() {
-//        assertFalse(pelilauta.siirraVasemmalle(3, 0));
-//    }
+    @Test
+    public void siirraOikeallePalauttaaFalseKunOllaanReunassa() {
+        assertFalse(kayttaja.siirraOikealle(3, 2));
+    }
 
+    @Test
+    public void siirraVasemmalleToimiiKunVasemmallaTyhjaa() {
+        kayttaja.siirraOikealle(3, 1);
+        assertTrue(kayttaja.siirraVasemmalle(3, 2));
+    }
+
+    @Test
+    public void siirraVasemmallePalauttaaFalseKunOllaanReunassa() {
+        assertFalse(kayttaja.siirraVasemmalle(3, 0));
+    }
 //    @Test
 //    public void siirraYlosToimiiKunYlapuolellaTyhjaa() {
 //    }
@@ -80,14 +79,13 @@ public class PelilaudanKayttajaTest {
 //    @Test
 //    public void siirraAlasPalauttaaFalseKunOllaanAlareunassa() {
 //    }
+    @Test
+    public void teeSiirtoSiirtaaNappiaJosVieressaOnTyhjaa() {
+        assertTrue(kayttaja.teeSiirto(3, 1));
+    }
 
-//    @Test
-//    public void teeSiirtoSiirtaaNappiaJosVieressaOnTyhjaa() {
-//        assertTrue(pelilauta.teeSiirto(3, 1));
-//    }
-//
-//    @Test
-//    public void nappiaEiVoiSiirtaaJosVieressaEiOleTyhjaa() {
-//        assertFalse(pelilauta.teeSiirto(1, 1));
-//    }
+    @Test
+    public void nappiaEiVoiSiirtaaJosVieressaEiOleTyhjaa() {
+        assertFalse(kayttaja.teeSiirto(1, 1));
+    }
 }
