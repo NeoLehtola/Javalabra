@@ -6,29 +6,22 @@ import java.util.Random;
 public class Pelilauta {
     
     private Nappula[][] lauta;
-    private final int SIVUNALARAJA = 3;
-    private final int SIVUNYLARAJA = 8;
+
     private int leveys;
     private int korkeus;
     
     public Pelilauta(int korkeus, int leveys) {
-       
-        if (tarkistaOnkoSallittuAlkuarvo(leveys)) {
-            this.leveys = leveys;
-        }
-        if (tarkistaOnkoSallittuAlkuarvo(korkeus)) {
-            this.korkeus = korkeus;
-        }
+        // sivun pituuden sopivuuden tarkistus on siirretty Pelilogiikkaan.
+        // pelilauta luodaan aina Pelilogiikka-luokan kautta
+        this.leveys = leveys;
+        this.korkeus = korkeus;
         
         lauta = new Nappula[korkeus][leveys];
         AsetaNumerotJarjestykseenJaJataViimeinenTyhjaksi();
     }
     
     
-    private boolean tarkistaOnkoSallittuAlkuarvo(int sivu) {
-        return SIVUNALARAJA <= sivu && sivu <= SIVUNYLARAJA;
-                 
-    }
+
     
     // tee yhteismetodi, joka asettaa alkutilan ja sitten sekoittaa, 
     // ja kutsu sitä konstruktorissa.
@@ -155,6 +148,12 @@ public class Pelilauta {
     public boolean lautaValmis() {
         
         return false;
+    }
+
+ 
+
+    public Nappula[][] getLauta() {
+        return lauta;
     }
     
 
