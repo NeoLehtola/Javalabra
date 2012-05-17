@@ -47,8 +47,13 @@ public class Pelilauta {
     
     private void sekoitaNappulat() {
         Random r = new Random();
-        
-        
+        for (int i = 0; i < 10000; i++) {
+            int siirronKorkeus = r.nextInt(korkeus);
+            int siirronLeveys = r.nextInt(leveys);
+            this.teeSiirto(siirronKorkeus, siirronLeveys);
+            
+        }
+              
     }
    
     public Nappula getNappula(int korkeus, int leveys) {
@@ -148,6 +153,7 @@ public class Pelilauta {
     }
     
     public boolean lautaValmis() {
+        
         return false;
     }
     

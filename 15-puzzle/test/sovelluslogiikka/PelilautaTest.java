@@ -71,6 +71,11 @@ public class PelilautaTest {
     }
     
     @Test
+    public void lautaSekoittuuAlussa() {
+        
+    }
+    
+    @Test
     public void siirraOikealleToimiiKunOikeallaTyhjaa() {
         assertTrue(pelilauta.siirraOikealle(3, 1));
     }
@@ -87,8 +92,8 @@ public class PelilautaTest {
     }
     
     @Test
-    public void siirraVasemmallePalauttaaFalseKunOllaanReunassa() {
-        
+    public void siirraVasemmallePalauttaaFalseKunOllaanReunassa() {        
+        assertFalse(pelilauta.siirraVasemmalle(3, 0));      
     }
     
     @Test
@@ -109,6 +114,16 @@ public class PelilautaTest {
     @Test
     public void siirraAlasPalauttaaFalseKunOllaanAlareunassa() {
         
+    }
+    
+    @Test 
+    public void teeSiirtoSiirtaaNappiaJosVieressaOnTyhjaa() {
+        assertTrue(pelilauta.teeSiirto(3, 1));
+    }
+    
+    @Test
+    public void nappiaEiVoiSiirtaaJosVieressaEiOleTyhjaa() {
+        assertFalse(pelilauta.teeSiirto(1, 1));
     }
 
 }
