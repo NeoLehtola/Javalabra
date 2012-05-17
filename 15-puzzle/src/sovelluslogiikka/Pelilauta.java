@@ -1,24 +1,34 @@
-
 package sovelluslogiikka;
 
-
 public class Pelilauta {
-    
-    private Nappula[][] lauta;
 
+    private Nappula[][] lauta;
     private int leveys;
     private int korkeus;
-    
-    public Pelilauta(int korkeus, int leveys) {
+    private final int SIVUNALARAJA = 3;
+    private final int SIVUNYLARAJA = 8;
 
-        this.leveys = leveys;
-        this.korkeus = korkeus;
-        
+    public Pelilauta(int korkeus, int leveys) {
+        asetaSallittuKorkeusJaLeveys(korkeus, leveys);
         lauta = new Nappula[korkeus][leveys];
-        AsetaNumerotJarjestykseenJaJataViimeinenTyhjaksi();
+        asetaNumerotJarjestykseenJaJataViimeinenTyhjaksi();
     }
-    
-    private void AsetaNumerotJarjestykseenJaJataViimeinenTyhjaksi() {
+
+    private boolean onSallittuSivunPituus(int sivu) {
+        return SIVUNALARAJA <= sivu && sivu <= SIVUNYLARAJA;
+    }
+
+    private void asetaSallittuKorkeusJaLeveys(int korkeus, int leveys) {
+        if (!onSallittuSivunPituus(korkeus) || !onSallittuSivunPituus(leveys)) {
+            throw new IllegalArgumentException("Korkeuden ja leveyden oltava  väliltä " + SIVUNALARAJA + "-" + SIVUNYLARAJA);
+        }
+        this.korkeus = korkeus;
+        this.leveys = leveys;
+
+
+    }
+
+    private void asetaNumerotJarjestykseenJaJataViimeinenTyhjaksi() {
         int nro = 1;
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
@@ -30,27 +40,28 @@ public class Pelilauta {
             }
         }
     }
-       
+
     public Nappula getNappula(int korkeus, int leveys) {
         return lauta[korkeus][leveys];
     }
-      
+
     public int getLeveys() {
         return leveys;
     }
-    
+
     public int getKorkeus() {
         return korkeus;
     }
-    
+
     public Nappula[][] getLauta() {
         return lauta;
     }
-    
 
-    
-    
+    public int getSIVUNALARAJA() {
+        return SIVUNALARAJA;
+    }
 
-    
-    
+    public int getSIVUNYLARAJA() {
+        return SIVUNYLARAJA;
+    }
 }

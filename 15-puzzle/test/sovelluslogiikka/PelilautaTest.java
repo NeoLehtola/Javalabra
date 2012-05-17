@@ -33,15 +33,52 @@ public class PelilautaTest {
     }
 
     @Test
+    public void konstruktoriLuoSallitunKokoisenLaudan() {
+        assertNotNull(pelilauta);
+    }
+
+        /*en nyt ole varma, testaako nämä konstruktoritestit sitä mitä pitää
+         * tai testaako ne oikeastaan yhtään mitään...
+         */
+    
+    @Test
+    public void konstruktoriEiLuoLiianIsoaLautaa() {
+        try {
+            pelilauta = new Pelilauta(1000, 100);
+        } catch (IllegalArgumentException e) {
+        }
+    }
+    
+    @Test 
+    public void konstruktoriEiLuoNegatiivistaLautaa() {
+        try {
+            pelilauta = new Pelilauta(-1, -2);
+        } catch (IllegalArgumentException e) {
+            
+        }
+    }
+    
+    @Test
+    public void konstruktoriEiLuoLautaaJossaToinenArvoVaarin() {
+        try {
+            pelilauta = new Pelilauta(4, pelilauta.getSIVUNYLARAJA() + 1);
+        } catch (IllegalArgumentException e) {
+            
+        }
+    }
+    
+ 
+
+    @Test
     public void kaikissaRuuduissaOnNappula() {
         for (int i = 0; i < pelilauta.getKorkeus(); i++) {
             for (int j = 0; j < pelilauta.getLeveys(); j++) {
                 assertNotNull(pelilauta.getNappula(i, j));
-                
+
             }
         }
     }
-    
+
     @Test
     public void numerointiAlkaaYkkosesta() {
         assertEquals(1, pelilauta.getNappula(0, 0).getArvo());

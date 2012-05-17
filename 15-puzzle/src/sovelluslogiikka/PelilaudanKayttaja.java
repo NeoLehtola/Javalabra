@@ -6,20 +6,12 @@ import java.util.Random;
 
 public class PelilaudanKayttaja extends Pelilauta {
 
-    private final int SIVUNALARAJA = 3;
-    private final int SIVUNYLARAJA = 8;
-    
 
     public PelilaudanKayttaja(int korkeus, int leveys) {
-        super(korkeus, leveys);
+        super(korkeus, leveys);       
         sekoitaNappulat();
     }
-
-    private boolean tarkistaOnkoSallittuAlkuarvo(int sivu) {
-        return SIVUNALARAJA <= sivu && sivu <= SIVUNYLARAJA;
-
-    }
-
+    
     private void sekoitaNappulat() {
         Random r = new Random();
         for (int i = 0; i < 10000; i++) {
