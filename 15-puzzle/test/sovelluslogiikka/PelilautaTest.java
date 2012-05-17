@@ -75,26 +75,26 @@ public class PelilautaTest {
 //    public void lautaSekoittuuAlussa() {
 //    }
 
-    @Test
-    public void siirraOikealleToimiiKunOikeallaTyhjaa() {
-        assertTrue(pelilauta.siirraOikealle(3, 1));
-    }
-
-    @Test
-    public void siirraOikeallePalauttaaFalseKunOllaanReunassa() {
-        assertFalse(pelilauta.siirraOikealle(3, 2));
-    }
-
-    @Test
-    public void siirraVasemmalleToimiiKunVasemmallaTyhjaa() {
-        pelilauta.siirraOikealle(3, 1);
-        assertTrue(pelilauta.siirraVasemmalle(3, 2));
-    }
-
-    @Test
-    public void siirraVasemmallePalauttaaFalseKunOllaanReunassa() {
-        assertFalse(pelilauta.siirraVasemmalle(3, 0));
-    }
+//    @Test
+//    public void siirraOikealleToimiiKunOikeallaTyhjaa() {
+//        assertTrue(pelilauta.siirraOikealle(3, 1));
+//    }
+//
+//    @Test
+//    public void siirraOikeallePalauttaaFalseKunOllaanReunassa() {
+//        assertFalse(pelilauta.siirraOikealle(3, 2));
+//    }
+//
+//    @Test
+//    public void siirraVasemmalleToimiiKunVasemmallaTyhjaa() {
+//        pelilauta.siirraOikealle(3, 1);
+//        assertTrue(pelilauta.siirraVasemmalle(3, 2));
+//    }
+//
+//    @Test
+//    public void siirraVasemmallePalauttaaFalseKunOllaanReunassa() {
+//        assertFalse(pelilauta.siirraVasemmalle(3, 0));
+//    }
 
 //    @Test
 //    public void siirraYlosToimiiKunYlapuolellaTyhjaa() {
@@ -112,13 +112,13 @@ public class PelilautaTest {
 //    public void siirraAlasPalauttaaFalseKunOllaanAlareunassa() {
 //    }
 
-    @Test
-    public void teeSiirtoSiirtaaNappiaJosVieressaOnTyhjaa() {
-        assertTrue(pelilauta.teeSiirto(3, 1));
-    }
-
-    @Test
-    public void nappiaEiVoiSiirtaaJosVieressaEiOleTyhjaa() {
-        assertFalse(pelilauta.teeSiirto(1, 1));
-    }
+//    @Test
+//    public void teeSiirtoSiirtaaNappiaJosVieressaOnTyhjaa() {
+//        assertTrue(pelilauta.teeSiirto(3, 1));
+//    }
+//
+//    @Test
+//    public void nappiaEiVoiSiirtaaJosVieressaEiOleTyhjaa() {
+//        assertFalse(pelilauta.teeSiirto(1, 1));
+//    }
 }
