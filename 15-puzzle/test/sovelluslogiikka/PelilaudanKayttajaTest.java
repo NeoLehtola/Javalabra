@@ -90,19 +90,29 @@ public class PelilaudanKayttajaTest {
 
     }
 
-//    @Test
-//    public void siirraYlosToimiiKunYlapuolellaTyhjaa() {
-//    }
-//
-//    @Test
-//    public void siirraYlosPalauttaaFalseKunOllaanYlareunassa() {
-//    }
-//
-//    @Test
-//    public void siirraAlasToimiiKunAlapuolellaTyhjaa() {
-//    }
-//
-//    @Test
-//    public void siirraAlasPalauttaaFalseKunOllaanAlareunassa() {
-//    }
+    @Test
+    public void siirraYlosToimiiKunYlapuolellaTyhjaa() {
+        kayttaja.siirraAlas(2, 2);
+        assertTrue(kayttaja.siirraYlos(3, 2));
+    }
+
+    @Test
+    public void siirraYlosPalauttaaFalseKunOllaanYlareunassa() {
+        assertFalse(kayttaja.siirraYlos(0, 2));
+    }
+
+    @Test
+    public void siirraAlasToimiiKunAlapuolellaTyhjaa() {
+        assertTrue(kayttaja.siirraAlas(2, 2));
+    }
+
+    @Test
+    public void siirraAlasPalauttaaFalseKunOllaanAlareunassa() {
+        assertFalse(kayttaja.siirraAlas(3, 1));
+    }
+    
+    @Test
+    public void siirtoMetodiEiToimiVaarallaSyotteella() {
+        assertFalse(kayttaja.teeSiirto(6, 10));
+    }
 }
