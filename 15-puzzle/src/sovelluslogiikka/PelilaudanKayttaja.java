@@ -23,26 +23,6 @@ public class PelilaudanKayttaja extends Pelilauta {
 
     }
     
-//    // kesken!
-//    private boolean siirrettavaksiPyydettyNappiOnLaudalla(int napinKorkeus, int napinLeveys) {
-//        if (napinKorkeus < 0 || napinLeveys < 0) {
-//            return false;
-//        }
-//        if (napinKorkeus - 1 < 0 || napinLeveys - 1 < 0) {
-//            return false;
-//        }
-//        
-//        if (napinLeveys > getLeveys() || napinKorkeus > getKorkeus()) {
-//            return false;
-//        }
-//        
-//        if (napinLeveys + 1 >= getLeveys() || napinKorkeus + 1 >= getKorkeus()) {
-//            return false;
-//        }
-//        
-//        return true;
-//    }
-
     /**
      * parametreina annetaan siirrettävän nappulan NYKYINEN SIJAINTI; metodin
      * täytyy tarkistaa, onko parametrina saadun nappulan oikealla puolella
@@ -108,8 +88,21 @@ public class PelilaudanKayttaja extends Pelilauta {
 
         return false;
     }
+    
+        // kesken!
+    private boolean siirrettavaksiPyydettyNappiOnLaudalla(int napinKorkeus, int napinLeveys) {
+        if (napinKorkeus > getKorkeus() || napinLeveys > getLeveys()) {
+            return false;
+        }
+        
+        return true;
+    }
 
     public boolean teeSiirto(int napinKorkeus, int napinLeveys) {
+        if (!siirrettavaksiPyydettyNappiOnLaudalla(napinKorkeus, napinLeveys)) {
+            return false;
+        }
+        
         if (siirraOikealle(napinKorkeus, napinLeveys)) {
             return true;
         }
