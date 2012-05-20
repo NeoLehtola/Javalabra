@@ -23,17 +23,25 @@ public class PelilaudanKayttaja extends Pelilauta {
 
     }
     
-    // kesken!
-    private boolean siirrettavaksiPyydettyNappiOnLaudalla(int napinKorkeus, int napinLeveys) {
-        if (napinKorkeus < 0 || napinLeveys < 0) {
-            return false;
-        }
-        if (napinKorkeus - 1 < 0 || napinLeveys - 1 < 0) {
-            return false;
-        }
-        
-        return true;
-    }
+//    // kesken!
+//    private boolean siirrettavaksiPyydettyNappiOnLaudalla(int napinKorkeus, int napinLeveys) {
+//        if (napinKorkeus < 0 || napinLeveys < 0) {
+//            return false;
+//        }
+//        if (napinKorkeus - 1 < 0 || napinLeveys - 1 < 0) {
+//            return false;
+//        }
+//        
+//        if (napinLeveys > getLeveys() || napinKorkeus > getKorkeus()) {
+//            return false;
+//        }
+//        
+//        if (napinLeveys + 1 >= getLeveys() || napinKorkeus + 1 >= getKorkeus()) {
+//            return false;
+//        }
+//        
+//        return true;
+//    }
 
     /**
      * parametreina annetaan siirrettävän nappulan NYKYINEN SIJAINTI; metodin
