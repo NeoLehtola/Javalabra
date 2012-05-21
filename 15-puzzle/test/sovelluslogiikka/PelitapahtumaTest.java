@@ -25,7 +25,7 @@ public class PelitapahtumaTest {
     
     @Before
     public void setUp() {
-        this.peli = new Pelitapahtuma(4, 4);
+        this.peli = new Pelitapahtuma(4, 4, 0);
     }
     
     @After
@@ -37,13 +37,22 @@ public class PelitapahtumaTest {
         assertEquals(0, peli.getVuorojenMaara());
     }
     
+//    @Test
+//    public void vuorojenMaaraKasvaaYhdellaJokaKierroksenJalkeen() {
+//        int vuoroja = 0;            
+//    }
+    
     @Test
-    public void vuorojenMaaraKasvaaYhdellaJokaKierroksenJalkeen() {
-        // muuta testiä niin, että se huomioi vuoroiksi vain onnistuneet siirrot!
-//        for (int i = 0; i < 8; i++) {
-//            peli.pelaaYksiVuoro();
-//        }      
-//        assertEquals(8, peli.getVuorojenMaara());
+    public void vuorojenMaaraEiKasvaJosEiPystytaTekemaanSiirtoa() {
+        peli.pelaaYksiVuoro(0, 0);
+        assertEquals(0, peli.getVuorojenMaara());
     }
+    
+//    @Test
+//    public void vuoroaEiEnaaPelataJosLautaOnValmis() {
+//        
+//    }
+    
+    
     
 }
