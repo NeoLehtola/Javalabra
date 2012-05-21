@@ -2,6 +2,11 @@ package sovelluslogiikka;
 
 import java.util.Random;
 
+/**
+ * Tämä luokka perii Pelilauta-luokan, lisäte siihen sekoittamisen ja nappuloiden siirtämisen.
+ * Nimensä mukaisesti tämä luokka siis varsinaisesti käyttää pelilautaa.
+ */
+
 public class PelilaudanKayttaja extends Pelilauta {
     
     private int sekoitusMaara;
@@ -31,7 +36,7 @@ public class PelilaudanKayttaja extends Pelilauta {
      *
      * @param napinKorkeus
      * @param napinLeveys
-     * @return
+     * @return true jos siirto onnistuu, muuten false
      */
     protected boolean siirraOikealle(int napinKorkeus, int napinLeveys) {
         if (napinLeveys + 1 >= getLeveys()) {
@@ -98,27 +103,27 @@ public class PelilaudanKayttaja extends Pelilauta {
         return true;
     }
 
+    /**
+     * kokoava julkinen metodi, joka tarkistaa mihin suuntaan pystytään siirtymään,
+     * ja tekee siirron
+     * @param napinKorkeus
+     * @param napinLeveys
+     * @return 
+     */
     public boolean teeSiirto(int napinKorkeus, int napinLeveys) {
         if (!siirrettavaksiPyydettyNappiOnLaudalla(napinKorkeus, napinLeveys)) {
             return false;
         }
         
-        if (siirraOikealle(napinKorkeus, napinLeveys)) {
-            return true;
-        }
-        if (siirraVasemmalle(napinKorkeus, napinLeveys)) {
-            return true;
-        }
-        if (siirraYlos(napinKorkeus, napinLeveys)) {
-            return true;
-        }
-        if (siirraAlas(napinKorkeus, napinLeveys)) {
-            return true;
-        }
+        return voikoSiirtaaJohonkinSuuntaan(napinKorkeus, napinLeveys);
+     
 
-        return false;
     }
 
+    /**
+     * tarkistaa ovatko nappulat järjestyksessä ja peli päättynyt
+     * @return true jos peli päättynyt
+     */
     public boolean lautaValmis() {
         int nro = 1;
         for (int i = 0; i < getKorkeus(); i++) {
@@ -141,8 +146,18 @@ public class PelilaudanKayttaja extends Pelilauta {
         return sekoitusMaara;
     }
 
+    /**
+     * tällä voi valita montako kertaa laudan nappuloita siirretään sekoitusvaiheessa
+     * hyödyllisempi testivaiheessa kuin varsinaisessa pelissä
+     * @param sekoitusMaara 
+     */
     public void setSekoitusMaara(int sekoitusMaara) {
         this.sekoitusMaara = sekoitusMaara;
+    }
+
+    private boolean voikoSiirtaaJohonkinSuuntaan(int napinKorkeus, int napinLeveys) {
+        return siirraOikealle(napinKorkeus, napinLeveys) || siirraVasemmalle(napinKorkeus, napinLeveys) || (siirraYlos(napinKorkeus, napinLeveys)) || (siirraAlas(napinKorkeus, napinLeveys));
+ 
     }
     
     

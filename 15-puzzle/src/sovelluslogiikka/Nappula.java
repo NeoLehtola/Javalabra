@@ -2,7 +2,7 @@
 package sovelluslogiikka;
 
 /**
- * 
+ * Nappulat pelilautaa varten
  * 
  */
 

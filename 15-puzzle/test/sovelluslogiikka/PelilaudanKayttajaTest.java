@@ -112,7 +112,12 @@ public class PelilaudanKayttajaTest {
     }
     
     @Test
-    public void siirtoMetodiEiToimiVaarallaSyotteella() {
+    public void siirtoMetodiEiToimiLiianSuurellaSyotteella() {
         assertFalse(kayttaja.teeSiirto(6, 10));
+    }
+    
+    @Test
+    public void siirtoMetodiEiToimiNegatiivisellaSyotteella() {
+        
     }
 }

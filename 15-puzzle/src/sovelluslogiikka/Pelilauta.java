@@ -19,10 +19,21 @@ public class Pelilauta {
         asetaNumerotJarjestykseenJaJataViimeinenTyhjaksi();
     }
 
+    /**
+     * tarkistaa, ettei luoda liian pientä tai liian isoa lautaa
+     * käytetään sekä korkeuden että leveyden tarkistukseen
+     * @param sivu
+     * @return 
+     */
     private boolean onSallittuSivunPituus(int sivu) {
         return SIVUNALARAJA <= sivu && sivu <= SIVUNYLARAJA;
     }
 
+    /**
+     * 
+     * @param korkeus
+     * @param leveys 
+     */
     private void asetaSallittuKorkeusJaLeveys(int korkeus, int leveys) {
         if (!onSallittuSivunPituus(korkeus) || !onSallittuSivunPituus(leveys)) {
             throw new IllegalArgumentException("Korkeuden ja leveyden oltava  väliltä " + SIVUNALARAJA + "-" + SIVUNYLARAJA);
