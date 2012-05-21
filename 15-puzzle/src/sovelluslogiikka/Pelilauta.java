@@ -16,7 +16,7 @@ public class Pelilauta {
     public Pelilauta(int korkeus, int leveys) {
         asetaSallittuKorkeusJaLeveys(korkeus, leveys);
         lauta = new Nappula[korkeus][leveys];
-        asetaNumerotJarjestykseenJaJataViimeinenTyhjaksi();
+        asetaNappulatJarjestykseenJaJataViimeinenTyhjaksi();
     }
 
     /**
@@ -30,7 +30,7 @@ public class Pelilauta {
     }
 
     /**
-     * 
+     * konstruktorin apumetodi, joka katsoo etteivät korkeus ja leveys ylitä sallittuja rajoja
      * @param korkeus
      * @param leveys 
      */
@@ -44,7 +44,11 @@ public class Pelilauta {
 
     }
 
-    private void asetaNumerotJarjestykseenJaJataViimeinenTyhjaksi() {
+    /**
+     * konstruktorin apumetodi, joka laittaa alussa nappulat numerotunnisteen mukaiseen järjestykseen
+     * ja jättää viimeisen nappulan tyhjäksi (eli tunnisteen arvoksi -1)
+     */
+    private void asetaNappulatJarjestykseenJaJataViimeinenTyhjaksi() {
         int nro = 1;
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {

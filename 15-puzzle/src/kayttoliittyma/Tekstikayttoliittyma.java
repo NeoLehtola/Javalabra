@@ -13,14 +13,14 @@ public class Tekstikayttoliittyma {
         this.kayttaja = kayttaja;
         
     }
-    // missä vaiheessa tämä valinta suoritetaan, jos laudan koko 
-    // pitää määrittää jo konstruktorin parametrin parametreina?
-    public void valitseLaudanKoko(Scanner lukija) throws Exception {
-        System.out.println("Tervetuloa pelaamaan 15-puzzlea");
-        System.out.println("Voit valita pelilaudan leveyden ja korkeuden");
-        System.out.println("väliltä " + kayttaja.getSIVUNALARAJA() + " - " + kayttaja.getSIVUNYLARAJA());
-        
-    }
+//    // missä vaiheessa tämä valinta suoritetaan, jos laudan koko 
+//    // pitää määrittää jo konstruktorin parametrin parametreina?
+//    public void valitseLaudanKoko(Scanner lukija) throws Exception {
+//        System.out.println("Tervetuloa pelaamaan 15-puzzlea");
+//        System.out.println("Voit valita pelilaudan leveyden ja korkeuden");
+//        System.out.println("väliltä " + kayttaja.getSIVUNALARAJA() + " - " + kayttaja.getSIVUNYLARAJA());
+//        
+//    }
     
     public void tulostaPelilauta() {
         for (int i = 0; i < kayttaja.getKorkeus(); i++) {

@@ -3,12 +3,12 @@ package sovelluslogiikka;
 import java.util.Random;
 
 /**
- * Tämä luokka perii Pelilauta-luokan, lisäte siihen sekoittamisen ja nappuloiden siirtämisen.
- * Nimensä mukaisesti tämä luokka siis varsinaisesti käyttää pelilautaa.
+ * Tämä luokka perii Pelilauta-luokan, lisäte siihen sekoittamisen ja
+ * nappuloiden siirtämisen. Nimensä mukaisesti tämä luokka siis varsinaisesti
+ * käyttää pelilautaa.
  */
-
 public class PelilaudanKayttaja extends Pelilauta {
-    
+
     private int sekoitusMaara;
 
     public PelilaudanKayttaja(int korkeus, int leveys, int sekoitusMaara) {
@@ -27,12 +27,12 @@ public class PelilaudanKayttaja extends Pelilauta {
         }
 
     }
-    
+
     /**
      * parametreina annetaan siirrettävän nappulan NYKYINEN SIJAINTI; metodin
      * täytyy tarkistaa, onko parametrina saadun nappulan oikealla puolella
-     * tyhjä nappi
-     * protected vain siksi että metodeja pystyisi testaamaan suoraan
+     * tyhjä nappi. protected vain siksi että metodeja pystyisi testaamaan
+     * suoraan
      *
      * @param napinKorkeus
      * @param napinLeveys
@@ -52,6 +52,12 @@ public class PelilaudanKayttaja extends Pelilauta {
         return false;
     }
 
+    /**
+     * 
+     * @param napinKorkeus
+     * @param napinLeveys
+     * @return 
+     */
     protected boolean siirraVasemmalle(int napinKorkeus, int napinLeveys) {
         if (napinLeveys - 1 < 0) {
             return false;
@@ -66,6 +72,12 @@ public class PelilaudanKayttaja extends Pelilauta {
         return false;
     }
 
+    /**
+     * 
+     * @param napinKorkeus
+     * @param napinLeveys
+     * @return 
+     */
     protected boolean siirraYlos(int napinKorkeus, int napinLeveys) {
         if (napinKorkeus - 1 < 0) {
             return false;
@@ -80,6 +92,12 @@ public class PelilaudanKayttaja extends Pelilauta {
         return false;
     }
 
+    /**
+     * 
+     * @param napinKorkeus
+     * @param napinLeveys
+     * @return 
+     */
     protected boolean siirraAlas(int napinKorkeus, int napinLeveys) {
         if (napinKorkeus + 1 >= getKorkeus()) {
             return false;
@@ -93,35 +111,51 @@ public class PelilaudanKayttaja extends Pelilauta {
 
         return false;
     }
-    
-        // kesken!
+
+    /**
+     * tarkistaa siirrettävän napin koordinaatit
+     * @param napinKorkeus
+     * @param napinLeveys
+     * @return true jos nappi laudalla, false jos nappi on laudan ulkopuolella
+     */
     private boolean siirrettavaksiPyydettyNappiOnLaudalla(int napinKorkeus, int napinLeveys) {
-        if (napinKorkeus > getKorkeus() || napinLeveys > getLeveys()) {
-            return false;
-        }
-        
-        return true;
+        return napinKorkeus <= getKorkeus() && napinLeveys <= getLeveys() && napinKorkeus >= 0 && napinLeveys >= 0;
+            
+
     }
 
     /**
-     * kokoava julkinen metodi, joka tarkistaa mihin suuntaan pystytään siirtymään,
-     * ja tekee siirron
+     * kokoava julkinen metodi, joka tarkistaa mihin suuntaan pystytään
+     * siirtymään, ja tekee siirron
+     *
      * @param napinKorkeus
      * @param napinLeveys
-     * @return 
+     * @return
      */
     public boolean teeSiirto(int napinKorkeus, int napinLeveys) {
         if (!siirrettavaksiPyydettyNappiOnLaudalla(napinKorkeus, napinLeveys)) {
             return false;
         }
-        
-        return voikoSiirtaaJohonkinSuuntaan(napinKorkeus, napinLeveys);
-     
+
+        return voikoNappiaSiirtaaJohonkinSuuntaan(napinKorkeus, napinLeveys);
+
+
+    }
+
+    /**
+     * tarkistaa, voiko annettua nappia siirtää mihinkään suuntaan
+     * @param napinKorkeus
+     * @param napinLeveys
+     * @return 
+     */
+    private boolean voikoNappiaSiirtaaJohonkinSuuntaan(int napinKorkeus, int napinLeveys) {
+        return siirraOikealle(napinKorkeus, napinLeveys) || siirraVasemmalle(napinKorkeus, napinLeveys) || (siirraYlos(napinKorkeus, napinLeveys)) || (siirraAlas(napinKorkeus, napinLeveys));
 
     }
 
     /**
      * tarkistaa ovatko nappulat järjestyksessä ja peli päättynyt
+     *
      * @return true jos peli päättynyt
      */
     public boolean lautaValmis() {
@@ -147,18 +181,12 @@ public class PelilaudanKayttaja extends Pelilauta {
     }
 
     /**
-     * tällä voi valita montako kertaa laudan nappuloita siirretään sekoitusvaiheessa
-     * hyödyllisempi testivaiheessa kuin varsinaisessa pelissä
-     * @param sekoitusMaara 
+     * tällä voi valita montako kertaa laudan nappuloita siirretään
+     * sekoitusvaiheessa hyödyllisempi testivaiheessa kuin varsinaisessa pelissä
+     *
+     * @param sekoitusMaara
      */
     public void setSekoitusMaara(int sekoitusMaara) {
         this.sekoitusMaara = sekoitusMaara;
     }
-
-    private boolean voikoSiirtaaJohonkinSuuntaan(int napinKorkeus, int napinLeveys) {
-        return siirraOikealle(napinKorkeus, napinLeveys) || siirraVasemmalle(napinKorkeus, napinLeveys) || (siirraYlos(napinKorkeus, napinLeveys)) || (siirraAlas(napinKorkeus, napinLeveys));
- 
-    }
-    
-    
 }
