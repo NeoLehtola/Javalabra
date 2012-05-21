@@ -10,6 +10,8 @@ import static org.junit.Assert.*;
  */
 public class PelitapahtumaTest {
     
+    private Pelitapahtuma peli;
+    
     public PelitapahtumaTest() {
     }
 
@@ -23,14 +25,25 @@ public class PelitapahtumaTest {
     
     @Before
     public void setUp() {
+        this.peli = new Pelitapahtuma(4, 4);
     }
     
     @After
     public void tearDown() {
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+
+    @Test
+    public void vuorojenMaaraAlussaNolla() {
+        assertEquals(0, peli.getVuorojenMaara());
+    }
+    
+    @Test
+    public void vuorojenMaaraKasvaaYhdellaJokaKierroksenJalkeen() {
+        // muuta testiä niin, että se huomioi vuoroiksi vain onnistuneet siirrot!
+//        for (int i = 0; i < 8; i++) {
+//            peli.pelaaYksiVuoro();
+//        }      
+//        assertEquals(8, peli.getVuorojenMaara());
+    }
+    
 }
