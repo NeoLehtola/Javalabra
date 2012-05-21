@@ -1,6 +1,11 @@
 
 package sovelluslogiikka;
 
+/**
+ * 
+ * 
+ */
+
 public class Nappula {
 
     private int arvo;
