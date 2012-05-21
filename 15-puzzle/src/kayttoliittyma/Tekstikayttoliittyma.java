@@ -4,6 +4,10 @@ package kayttoliittyma;
 import java.util.Scanner;
 import sovelluslogiikka.PelilaudanKayttaja;
 
+/* tämähän ei nyt vielä ollenkaan toimi, kun en ole saanut päätettyä missä kohti se 
+ * pelilauta oikein pitää luoda. tarvitsisin sitä ennen kuin se on luotu. 
+ */
+
 public class Tekstikayttoliittyma {
     
     private PelilaudanKayttaja kayttaja;
