@@ -8,19 +8,17 @@ package sovelluslogiikka;
 
 public class Nappula {
 
-    private int arvo;
+    private int tunniste;
     
-    public Nappula(int arvo) {
-        this.arvo = arvo;
+    public Nappula(int tunniste) {
+        this.tunniste = tunniste;
     }
 
-    public int getArvo() {
-        return arvo;
+    public int getTunniste() {
+        return tunniste;
     }
 
-    public void setArvo(int arvo) {
-        this.arvo = arvo;
-    }
+
     
     
 
