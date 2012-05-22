@@ -2,7 +2,6 @@
 package kayttoliittyma;
 
 import java.util.Scanner;
-import sovelluslogiikka.SiirtavaPelilauta;
 import sovelluslogiikka.Pelitapahtuma;
 
 
@@ -39,8 +38,15 @@ public class Tekstikayttoliittyma {
      */
     public void kaynnista(Scanner lukija) {
         tulostaAloitustekstitJaLuoUusiPeli(lukija);
-        tulostaPelilauta();
         
+        while (!peli.peliPaattynyt()) {
+            tulostaPelilauta();
+            System.out.print("Anna siirrettävän korkeus: ");
+            int siirrKorkeus = Integer.parseInt(lukija.nextLine());
+            System.out.print("Anna siirrettävän leveys: ");
+            int siirrLeveys = Integer.parseInt(lukija.nextLine());
+            peli.pelaaYksiVuoroJosSiirtoSallittuEikaPeliLoppunut(siirrKorkeus, siirrLeveys);
+        }
 
     }
     

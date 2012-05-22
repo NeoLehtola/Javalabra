@@ -2,7 +2,6 @@
 package kayttoliittyma;
 
 import java.util.Scanner;
-import sovelluslogiikka.SiirtavaPelilauta;
 //import javax.swing.SwingUtilities;
 
 public class Main {

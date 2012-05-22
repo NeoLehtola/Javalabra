@@ -44,7 +44,7 @@ public class PelitapahtumaTest {
     
     @Test
     public void vuorojenMaaraEiKasvaJosEiPystytaTekemaanSiirtoa() {
-        peli.pelaaYksiVuoro(0, 0);
+        peli.pelaaYksiVuoroJosSiirtoSallittuEikaPeliLoppunut(0, 0);
         assertEquals(0, peli.getVuorojenMaara());
     }
     
@@ -52,6 +52,11 @@ public class PelitapahtumaTest {
 //    public void vuoroaEiEnaaPelataJosLautaOnValmis() {
 //        
 //    }
+    
+    @Test
+    public void eiVoidaTehdaSiirtoaJonkaKorkeusOnPelilaudanUlkopuolella() {
+        peli.pelaaYksiVuoroJosSiirtoSallittuEikaPeliLoppunut(5, 2);
+    }
     
     
     
