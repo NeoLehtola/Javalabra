@@ -1,21 +1,17 @@
-
 package kayttoliittyma;
 
 import java.util.Scanner;
 import sovelluslogiikka.Pelitapahtuma;
 
-
-
 public class Tekstikayttoliittyma {
-    
+
     private Pelitapahtuma peli;
-    
-    
+    private Scanner lukija;
+
     public Tekstikayttoliittyma() {
-       
+        this.lukija = new Scanner(System.in);
     }
 
-   
     private void tulostaPelilauta() {
         for (int i = 0; i < peli.getPelilauta().getKorkeus(); i++) {
             for (int j = 0; j < peli.getPelilauta().getLeveys(); j++) {
@@ -32,45 +28,46 @@ public class Tekstikayttoliittyma {
             System.out.println("");
         }
     }
-    
+
     /**
      * tämä metodi käynnistää koko pelin
      */
-    public void kaynnista(Scanner lukija) {
-        tulostaAloitustekstitJaLuoUusiPeli(lukija);
-        
+    public void kaynnista() {
+        tulostaAloitustekstitJaLuoUusiPeli();
+
         while (!peli.peliPaattynyt()) {
-            tulostaPelilauta();
-            
-            kysyKorkeusJaLeveys(lukija);
-            
-//            if (peli.pelaaYksiVuoroJosSiirtoSallittu(siirrKorkeus, siirrLeveys)) {
-//                peli.kasvataVuorojenMaaraa();
-//            }
+            tulostaPelilauta();          
+
+            if (peli.pelaaYksiVuoroJosSiirtoSallittu(kysyKorkeus(), kysyLeveys())) {
+                peli.kasvataVuorojenMaaraa();
+            } else {
+                System.out.println("Siirto ei ole sallittu. Anna uusi sijainti.");
+            }
         }
-        System.out.println(peli.getVuorojenMaara());
+        System.out.println("Vuoroja " + peli.getVuorojenMaara());
+        System.out.println("Pisteet " + peli.laskePisteet());
 
     }
-    
-    private void tulostaAloitustekstitJaLuoUusiPeli(Scanner lukija) {
+
+    private void tulostaAloitustekstitJaLuoUusiPeli() {
         System.out.println("Tervetuloa pelaamaan 15-puzzlea.");
         System.out.println("Valitse laudan leveys ja korkeus"); // valintaväli täytyy lisätä
-        
+
         System.out.print("Korkeus: ");
         int korkeus = Integer.parseInt(lukija.nextLine());
         System.out.print("Leveys: ");
         int leveys = Integer.parseInt(lukija.nextLine());
-        
-        this.peli = new Pelitapahtuma(korkeus, leveys, korkeus*leveys*1000);       
-    }
-    
-    private void kysyKorkeusJaLeveys(Scanner lukija) {
-                    
-         System.out.print("Anna siirrettävän korkeus: " + "(" + peli.getPelilauta().getKorkeus() + "-");
-         int siirrKorkeus = Integer.parseInt(lukija.nextLine());
-         System.out.print("Anna siirrettävän leveys: ");
-         int siirrLeveys = Integer.parseInt(lukija.nextLine());
+
+        this.peli = new Pelitapahtuma(korkeus, leveys, korkeus * leveys * 1000);
     }
 
-    
+    private int kysyKorkeus() {
+        System.out.print("Anna siirrettävän korkeus: (0 - " + (peli.getPelilauta().getKorkeus() - 1) + ")");
+        return Integer.parseInt(lukija.nextLine());
+    }
+
+    private int kysyLeveys() {
+        System.out.print("Anna siirrettävän leveys: (0 - " + (peli.getPelilauta().getLeveys() - 1) + ")");
+        return Integer.parseInt(lukija.nextLine());
+    }
 }

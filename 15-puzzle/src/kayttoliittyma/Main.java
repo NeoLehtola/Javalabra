@@ -11,7 +11,7 @@ public class Main {
 //        SwingUtilities.invokeLater(gui);
         Scanner lukija = new Scanner(System.in);
         Tekstikayttoliittyma t = new Tekstikayttoliittyma();
-        t.kaynnista(lukija);
+        t.kaynnista();
       
         
     }
