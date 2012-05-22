@@ -10,39 +10,15 @@ public class Pelilauta {
     private Nappula[][] lauta;
     private int leveys;
     private int korkeus;
-    private final int SIVUNALARAJA = 3;
-    private final int SIVUNYLARAJA = 8;
 
     public Pelilauta(int korkeus, int leveys) {
-        asetaSallittuKorkeusJaLeveys(korkeus, leveys);
+        this.korkeus = korkeus;
+        this.leveys = leveys;
         lauta = new Nappula[korkeus][leveys];
         asetaNappulatJarjestykseenJaJataViimeinenTyhjaksi();
     }
 
-    /**
-     * tarkistaa, ettei luoda liian pientä tai liian isoa lautaa
-     * käytetään sekä korkeuden että leveyden tarkistukseen
-     * @param sivu
-     * @return 
-     */
-    private boolean onSallittuSivunPituus(int sivu) {
-        return SIVUNALARAJA <= sivu && sivu <= SIVUNYLARAJA;
-    }
 
-    /**
-     * konstruktorin apumetodi, joka katsoo etteivät korkeus ja leveys ylitä sallittuja rajoja
-     * @param korkeus
-     * @param leveys 
-     */
-    private void asetaSallittuKorkeusJaLeveys(int korkeus, int leveys) {
-        if (!onSallittuSivunPituus(korkeus) || !onSallittuSivunPituus(leveys)) {
-            throw new IllegalArgumentException("Korkeuden ja leveyden oltava  väliltä " + SIVUNALARAJA + "-" + SIVUNYLARAJA);
-        }
-        this.korkeus = korkeus;
-        this.leveys = leveys;
-
-
-    }
 
     /**
      * konstruktorin apumetodi, joka laittaa alussa nappulat numerotunnisteen mukaiseen järjestykseen
@@ -77,11 +53,4 @@ public class Pelilauta {
         return lauta;
     }
 
-    public int getSIVUNALARAJA() {
-        return SIVUNALARAJA;
-    }
-
-    public int getSIVUNYLARAJA() {
-        return SIVUNYLARAJA;
-    }
 }

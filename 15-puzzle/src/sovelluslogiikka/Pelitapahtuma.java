@@ -10,6 +10,7 @@ public class Pelitapahtuma {
 
     private int vuorojenMaara;
     private SiirtavaPelilauta pelilauta;
+    private PelinTallentaja tallentaja;
 
     public Pelitapahtuma(int laudanKorkeus, int laudanLeveys, int sekoitusMaara) {
         this.vuorojenMaara = 0;
@@ -20,13 +21,16 @@ public class Pelitapahtuma {
     public int getVuorojenMaara() {
         return vuorojenMaara;
     }
+    
+    public void kasvataVuorojenMaaraa() {
+        vuorojenMaara++;
+    }
 
     /**
      * 
      * @return
      */
-    public boolean pelaaYksiVuoroJosSiirtoSallittuEikaPeliLoppunut(int napinKorkeus, int napinLeveys) {
-        vuorojenMaara++;
+    public boolean pelaaYksiVuoroJosSiirtoSallittu(int napinKorkeus, int napinLeveys) {
         return pelilauta.teeSiirto(napinKorkeus, napinLeveys);
     }
 
