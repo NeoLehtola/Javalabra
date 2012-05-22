@@ -1,7 +1,7 @@
 
 package sovelluslogiikka;
 
-/**
+/*
  * tämän olisi tarkoitus ohjata koko pelin kulkua (aloitus, pelaaminen, lopetus, tallennus)
  * ja kommunikoida kälin kanssa.
  * luokka on vielä niin pahasti kesken, ettei sille ole kovin montaa järkevää testiä.
@@ -13,11 +13,11 @@ package sovelluslogiikka;
 public class Pelitapahtuma {
     
     private int vuorojenMaara;
-    private SiirtavaPelilauta kayttaja;
+    private SiirtavaPelilauta pelilauta;
     
     public Pelitapahtuma(int laudanKorkeus, int laudanLeveys, int sekoitusMaara) {
         this.vuorojenMaara = 0;
-        this.kayttaja = new SiirtavaPelilauta(laudanKorkeus, laudanLeveys, sekoitusMaara);
+        this.pelilauta = new SiirtavaPelilauta(laudanKorkeus, laudanLeveys, sekoitusMaara);
         
     }
 
@@ -31,8 +31,8 @@ public class Pelitapahtuma {
      * ja lisää vuorojen määrää yhdellä
      */
     public void pelaaYksiVuoro(int napinKorkeus, int napinLeveys) {
-        if (!kayttaja.lautaValmis()) {
-            if (kayttaja.teeSiirto(napinKorkeus, napinLeveys)) {
+        if (!pelilauta.lautaValmis()) {
+            if (pelilauta.teeSiirto(napinKorkeus, napinLeveys)) {
                 vuorojenMaara++;
             }
         }
@@ -43,10 +43,16 @@ public class Pelitapahtuma {
      * @return 
      */
     public int laskePisteet() {
-        int nappuloidenMaara = kayttaja.getKorkeus() * kayttaja.getLeveys();
+        int nappuloidenMaara = pelilauta.getKorkeus() * pelilauta.getLeveys();
         
         return (int) Math.pow(nappuloidenMaara, 2) / vuorojenMaara;
     }
+
+    public SiirtavaPelilauta getPelilauta() {
+        return pelilauta;
+    }
+    
+    
     
     
     
