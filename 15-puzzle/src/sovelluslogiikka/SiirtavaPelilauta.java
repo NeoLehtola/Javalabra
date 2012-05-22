@@ -7,11 +7,11 @@ import java.util.Random;
  * nappuloiden siirtämisen. Nimensä mukaisesti tämä luokka siis varsinaisesti
  * käyttää pelilautaa.
  */
-public class PelilaudanKayttaja extends Pelilauta {
+public class SiirtavaPelilauta extends Pelilauta {
 
     private int sekoitusMaara;
 
-    public PelilaudanKayttaja(int korkeus, int leveys, int sekoitusMaara) {
+    public SiirtavaPelilauta(int korkeus, int leveys, int sekoitusMaara) {
         super(korkeus, leveys);
         this.sekoitusMaara = sekoitusMaara;
         sekoitaNappulat();

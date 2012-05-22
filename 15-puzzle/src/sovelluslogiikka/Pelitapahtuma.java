@@ -8,17 +8,16 @@ package sovelluslogiikka;
  * 
  */
 
-import java.io.*;
-import java.util.TreeMap;
 
-public class Pelitapahtuma implements Serializable {
+
+public class Pelitapahtuma {
     
     private int vuorojenMaara;
-    private PelilaudanKayttaja kayttaja;
+    private SiirtavaPelilauta kayttaja;
     
     public Pelitapahtuma(int laudanKorkeus, int laudanLeveys, int sekoitusMaara) {
         this.vuorojenMaara = 0;
-        this.kayttaja = new PelilaudanKayttaja(laudanKorkeus, laudanLeveys, sekoitusMaara);
+        this.kayttaja = new SiirtavaPelilauta(laudanKorkeus, laudanLeveys, sekoitusMaara);
         
     }
 
@@ -48,15 +47,6 @@ public class Pelitapahtuma implements Serializable {
         
         return (int) Math.pow(nappuloidenMaara, 2) / vuorojenMaara;
     }
-    
-    public void tallennaPelinTulos(String pelaajanNimi) throws Exception {
-        
-    }
-    
-    /*
-     * lataaTulokset()
-     * return tulokset
-     */
     
     
     

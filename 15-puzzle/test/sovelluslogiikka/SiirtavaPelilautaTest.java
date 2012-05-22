@@ -11,11 +11,11 @@ import static org.junit.Assert.*;
  *
  * @author neom
  */
-public class PelilaudanKayttajaTest {
+public class SiirtavaPelilautaTest {
 
-    private PelilaudanKayttaja kayttaja;
+    private SiirtavaPelilauta kayttaja;
 
-    public PelilaudanKayttajaTest() {
+    public SiirtavaPelilautaTest() {
     }
 
     @BeforeClass
@@ -28,7 +28,7 @@ public class PelilaudanKayttajaTest {
 
     @Before
     public void setUp() {
-        kayttaja = new PelilaudanKayttaja(4, 3, 0);
+        kayttaja = new SiirtavaPelilauta(4, 3, 0);
     }
 
     @After
@@ -37,7 +37,7 @@ public class PelilaudanKayttajaTest {
 
     @Test
     public void lautaSekoittuuAlussa() {
-        kayttaja = new PelilaudanKayttaja(4, 3, 10000);
+        kayttaja = new SiirtavaPelilauta(4, 3, 10000);
         assertFalse(kayttaja.lautaValmis());
     }
 
