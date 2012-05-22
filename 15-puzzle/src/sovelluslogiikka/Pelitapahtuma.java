@@ -4,6 +4,7 @@ package sovelluslogiikka;
 /**
  * tämän olisi tarkoitus ohjata koko pelin kulkua (aloitus, pelaaminen, lopetus, tallennus)
  * ja kommunikoida kälin kanssa.
+ * luokka on vielä niin pahasti kesken, ettei sille ole kovin montaa järkevää testiä.
  * 
  */
 
@@ -15,9 +16,9 @@ public class Pelitapahtuma implements Serializable {
     private int vuorojenMaara;
     private PelilaudanKayttaja kayttaja;
     
-    public Pelitapahtuma(int laudanKorkeus, int laudanLeveys) {
+    public Pelitapahtuma(int laudanKorkeus, int laudanLeveys, int sekoitusMaara) {
         this.vuorojenMaara = 0;
-        this.kayttaja = new PelilaudanKayttaja(laudanKorkeus, laudanLeveys, 10000);
+        this.kayttaja = new PelilaudanKayttaja(laudanKorkeus, laudanLeveys, sekoitusMaara);
         
     }
 
