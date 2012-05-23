@@ -22,13 +22,16 @@ public class Pelitapahtuma {
         return vuorojenMaara;
     }
     
+    /**
+     * perussetteri
+     */
     public void kasvataVuorojenMaaraa() {
         vuorojenMaara++;
     }
 
     /**
-     * 
-     * @return
+     * tällä metodilla pääsee käsiksi SiirtavaPelilaudan metodiin teeSiirto
+     * @return true jos teeSiirto palauttaa true
      */
     public boolean pelaaYksiVuoroJosSiirtoSallittu(int napinKorkeus, int napinLeveys) {
         return pelilauta.teeSiirto(napinKorkeus, napinLeveys);
@@ -49,6 +52,11 @@ public class Pelitapahtuma {
         return pelilauta;
     }
 
+    /**
+     * tällä metodilla pääsee käsiksi SiirtavaPelilaudan metodiin lautaValmis(),
+     * eli tarkistetaan onko lauta järjestyksessä ja näin ollen peli loppunut
+     * @return true jos lautaValmis palauttaa true
+     */
     public boolean peliPaattynyt() {
         return pelilauta.lautaValmis();
     }

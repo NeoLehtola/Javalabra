@@ -6,12 +6,12 @@ import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-import sovelluslogiikka.Pelilauta;
+import sovelluslogiikka.SiirtavaPelilauta;
 
 public class GUI implements Runnable {
     
     private JFrame frame;
-    private Pelilauta pelilauta;
+    private SiirtavaPelilauta pelilauta;
 
     @Override
     public void run() {
