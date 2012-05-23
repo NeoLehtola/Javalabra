@@ -37,16 +37,13 @@ public class PelitapahtumaTest {
         assertEquals(0, peli.getVuorojenMaara());
     }
     
-//    @Test
-//    public void vuorojenMaaraKasvaaYhdellaJokaKierroksenJalkeen() {
-//        int vuoroja = 0;            
-//    }
-    
+
     @Test
-    public void vuorojenMaaraEiKasvaJosEiPystytaTekemaanSiirtoa() {
-        peli.pelaaYksiVuoroJosSiirtoSallittu(0, 0);
-        assertEquals(0, peli.getVuorojenMaara());
+    public void laskePisteetPalauttaaOikeanPistemaaran() {
+       
     }
+    
+
     
 //    @Test
 //    public void vuoroaEiEnaaPelataJosLautaOnValmis() {

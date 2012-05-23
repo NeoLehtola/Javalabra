@@ -14,6 +14,7 @@ public class Pelitapahtuma {
     public Pelitapahtuma(int laudanKorkeus, int laudanLeveys, int sekoitusMaara) {
         this.vuorojenMaara = 0;
         this.pelilauta = new SiirtavaPelilauta(laudanKorkeus, laudanLeveys, sekoitusMaara);
+        this.tallentaja = new PelinTallentaja();
 
     }
 
@@ -50,5 +51,13 @@ public class Pelitapahtuma {
 
     public boolean peliPaattynyt() {
         return pelilauta.lautaValmis();
+    }
+    
+    public void avaaTallennettuPeli() {
+        
+    }
+    
+    public void tallennaPeli(String nimi) {
+        
     }
 }
