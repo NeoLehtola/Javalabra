@@ -53,10 +53,15 @@ public class PelitapahtumaTest {
 //        
 //    }
     
-//    @Test
-//    public void eiVoidaTehdaSiirtoaJonkaKorkeusOnPelilaudanUlkopuolella() {
-//        peli.pelaaYksiVuoroJosSiirtoSallittu(5, 2);
-//    }
+    @Test
+    public void eiVoidaTehdaSiirtoaJonkaKorkeusOnPelilaudanUlkopuolella() {
+        assertFalse(peli.pelaaYksiVuoroJosSiirtoSallittu(5, 2));
+    }
+    
+    @Test
+    public void eiVoidaTehdaSiirtoaJonkaLeveysPelilaudanUlkopuolella() {
+        assertFalse(peli.pelaaYksiVuoroJosSiirtoSallittu(3, -2));
+    }
     
     
     

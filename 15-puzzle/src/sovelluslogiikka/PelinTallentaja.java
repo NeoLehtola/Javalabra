@@ -1,6 +1,10 @@
 
 package sovelluslogiikka;
 
+/**
+ * Tämä luokka hoitaa pelitilanteen ja pisteiden tallentamisen
+ */
+
 import java.io.File;
 
 public class PelinTallentaja {

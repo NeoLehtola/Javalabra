@@ -1,9 +1,8 @@
 package sovelluslogiikka;
 
-/*
- * tämän olisi tarkoitus ohjata koko pelin kulkua (aloitus, pelaaminen, lopetus,
- * tallennus) ja kommunikoida kälin kanssa. luokka on vielä niin pahasti kesken,
- * ettei sille ole kovin montaa järkevää testiä.
+/**
+ * tämän luokan metodeilla ohjataan koko pelin kulkua (aloitus, pelaaminen, vuorot, lopetus)
+ * 
  *
  */
 public class Pelitapahtuma {
