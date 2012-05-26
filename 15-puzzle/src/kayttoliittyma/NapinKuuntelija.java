@@ -3,20 +3,25 @@ package kayttoliittyma;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import sovelluslogiikka.Pelitapahtuma;
 
 
 public class NapinKuuntelija implements ActionListener {
 
+    private Pelitapahtuma peli;
+    private int napinKorkeus;
+    private int napinLeveys;
     
-    public NapinKuuntelija() {
-        
+    public NapinKuuntelija(Pelitapahtuma peli, int napinKorkeus, int napinLeveys) {
+        this.peli = peli;
+        this.napinKorkeus = napinKorkeus;
+        this.napinLeveys = napinLeveys;
         
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        peli.pelaaYksiVuoroJosSiirtoSallittu(napinKorkeus, napinLeveys);
     }
     
 }
