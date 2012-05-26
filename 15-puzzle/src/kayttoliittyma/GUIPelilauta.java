@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import sovelluslogiikka.Pelitapahtuma;
 import sovelluslogiikka.SiirtavaPelilauta;
@@ -15,6 +16,7 @@ public class GUIPelilauta implements Runnable {
     private JButton nappi;
     private JFrame frame;
     private JLabel tyhja;
+    private JPanel panel;
     private Pelitapahtuma peli;
     private SiirtavaPelilauta pelilauta;
     
@@ -35,8 +37,10 @@ public class GUIPelilauta implements Runnable {
     }
 
     private void luoKomponentit(Container container) {
+        panel = new JPanel();
         GridLayout layout = new GridLayout(pelilauta.getKorkeus(), pelilauta.getLeveys());
-        container.setLayout(layout);
+        panel.setLayout(layout);
+        container.add(panel);
         // pitääkö poistaa ensin vanhat napit?
         
         for (int i = 0; i < pelilauta.getKorkeus(); i++) {
@@ -52,6 +56,10 @@ public class GUIPelilauta implements Runnable {
                 }
             }
         }
+    }
+    
+    private void piirraNappulat(JPanel panel) {
+        // tähän sisältöä tuolta luoKomponentit-metodista
     }
 
     public JFrame getFrame() {
