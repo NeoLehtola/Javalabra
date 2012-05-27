@@ -1,68 +1,87 @@
 package kayttoliittyma;
 
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.WindowConstants;
 import sovelluslogiikka.Pelitapahtuma;
 import sovelluslogiikka.SiirtavaPelilauta;
 
-public class GUIPelilauta implements Runnable {
+public class GUIPelilauta extends JPanel {
 
     private JButton nappi;
     private JFrame frame;
     private JLabel tyhja;
-    private JPanel panel;
     private Pelitapahtuma peli;
     private SiirtavaPelilauta pelilauta;
-    
+
     public GUIPelilauta(Pelitapahtuma peli) {
         this.peli = peli;
         this.pelilauta = peli.getPelilauta();
     }
 
-    @Override
-    public void run() {
-        frame = new JFrame("15 puzzle");
-        // laske koko nappulan halutun koon mukaan, KORJAA!!! nyt toimii vain neliön mallisille
-        frame.setPreferredSize(new Dimension(pelilauta.getKorkeus()*70, pelilauta.getLeveys()*70));
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        luoKomponentit(frame.getContentPane());
-        frame.pack();
-        frame.setVisible(true);
+
+
+    private void luoKomponentit() {
+        GridLayout layout = new GridLayout(pelilauta.getKorkeus(), pelilauta.getLeveys());
+        setLayout(layout);
+        piirraNappulat();
+ 
+        
     }
 
-    private void luoKomponentit(Container container) {
-        panel = new JPanel();
-        GridLayout layout = new GridLayout(pelilauta.getKorkeus(), pelilauta.getLeveys());
-        panel.setLayout(layout);
-        container.add(panel);
-        // pitääkö poistaa ensin vanhat napit?
-        
+    private void piirraNappulat() {
+
+        this.removeAll();
+
         for (int i = 0; i < pelilauta.getKorkeus(); i++) {
             for (int j = 0; j < pelilauta.getLeveys(); j++) {
                 if (pelilauta.getNappula(i, j).getTunniste() == -1) {
                     tyhja = new JLabel("");
-                    container.add(tyhja);
+                    this.add(tyhja);
                 } else {
-                    nappi = new JButton();
+                    nappi = new JButton();                  
+                    nappi.addActionListener(new NapinKuuntelija());
                     nappi.setText(pelilauta.getNappula(i, j).getTunniste() + "");
-                    nappi.addActionListener(new NapinKuuntelija(peli, i, j));
-                    container.add(nappi);
+                    this.add(nappi);
                 }
             }
         }
     }
-    
-    private void piirraNappulat(JPanel panel) {
-        // tähän sisältöä tuolta luoKomponentit-metodista
-    }
 
-    public JFrame getFrame() {
-        return frame;
+
+
+    /**
+     * luokan sisäinen apuluokka
+     */
+    private class NapinKuuntelija implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton nappi = (JButton) e.getSource();
+            Dimension size = nappi.getSize();
+
+            // nää saattaa olla väärinpäin, hahmotusongelmia...
+            int korkeus = nappi.getY() / size.height;
+            int leveys = nappi.getX() / size.width;
+            
+
+
+            if (!peli.peliPaattynyt()) {
+                if (peli.pelaaYksiVuoroJosSiirtoSallittu(korkeus, leveys)) {
+                    peli.kasvataVuorojenMaaraa();
+                }
+            }
+
+            pelilauta = peli.getPelilauta();
+            piirraNappulat();
+            validate();
+            
+
+        }
     }
 }
