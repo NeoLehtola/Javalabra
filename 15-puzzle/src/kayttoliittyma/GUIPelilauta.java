@@ -14,7 +14,6 @@ import sovelluslogiikka.SiirtavaPelilauta;
 public class GUIPelilauta extends JPanel {
 
     private JButton nappi;
-    private JFrame frame;
     private JLabel tyhja;
     private Pelitapahtuma peli;
     private SiirtavaPelilauta pelilauta;
@@ -22,6 +21,7 @@ public class GUIPelilauta extends JPanel {
     public GUIPelilauta(Pelitapahtuma peli) {
         this.peli = peli;
         this.pelilauta = peli.getPelilauta();
+        luoKomponentit();
     }
 
 

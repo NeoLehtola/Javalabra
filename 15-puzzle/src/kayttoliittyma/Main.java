@@ -8,7 +8,7 @@ import sovelluslogiikka.Pelitapahtuma;
 public class Main {
     
     public static void main(String[] args) {
-        GUI gui = new GUI(new Pelitapahtuma(8, 8, 10000));
+        GUI gui = new GUI(new Pelitapahtuma(5, 5, 10000));
         SwingUtilities.invokeLater(gui);
         
         

@@ -3,6 +3,8 @@ package kayttoliittyma;
 
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,7 +15,9 @@ import sovelluslogiikka.Pelitapahtuma;
 public class GUI implements Runnable {
     
     private JFrame frame;
+    private JLabel vuorojenMaaraNakyma;
     private Pelitapahtuma peli;
+    
     
     public GUI(Pelitapahtuma peli) {
         this.peli = peli;
@@ -31,13 +35,20 @@ public class GUI implements Runnable {
     }
     
     private void luoKomponentit(Container container) {
+        GUIPelilauta lauta = new GUIPelilauta(peli);
+        this.vuorojenMaaraNakyma = new JLabel();
+        
         container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
-        container.add(new GUIPelilauta(peli));
-        container.add(new JLabel(peli.getVuorojenMaara() + ""));
+        container.add(lauta);
+        container.add(vuorojenMaaraNakyma);
     }
     
     public JFrame getFrame() {
         return frame;
     }
+    
+
+        
+    
     
 }
