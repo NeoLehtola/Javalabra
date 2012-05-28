@@ -70,7 +70,7 @@ public class Pelitapahtuma {
         
     }
     
-    public void tallennaPeli(String nimi) {
-        
+    public void tallennaPeli() {
+       tallentaja.tallennaPeli();
     }
 }

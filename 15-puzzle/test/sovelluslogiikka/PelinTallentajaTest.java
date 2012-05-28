@@ -4,6 +4,8 @@
  */
 package sovelluslogiikka;
 
+import java.io.File;
+import java.util.Scanner;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -12,6 +14,9 @@ import static org.junit.Assert.*;
  * @author pklehtol
  */
 public class PelinTallentajaTest {
+    
+    private File file;
+    private Pelitapahtuma peli;
     
     public PelinTallentajaTest() {
     }
@@ -26,11 +31,26 @@ public class PelinTallentajaTest {
     
     @Before
     public void setUp() {
+        file = new File("src/sovelluslogiikka/Tallennus.txt");
+        peli = new Pelitapahtuma(3, 3, 10000);
     }
     
     @After
     public void tearDown() {
     }
+    
+    @Test
+    public void pelinTallennusOnnistuu() throws Exception {
+        peli.tallennaPeli();
+        Scanner lukija = new Scanner(file);
+        while (lukija.hasNextLine()) {
+            
+        }
+        
+        
+    }
+    
+
 
     
 }

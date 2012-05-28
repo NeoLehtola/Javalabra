@@ -45,10 +45,6 @@ public class PelitapahtumaTest {
     
 
     
-//    @Test
-//    public void vuoroaEiEnaaPelataJosLautaOnValmis() {
-//        
-//    }
     
     @Test
     public void eiVoidaTehdaSiirtoaJonkaKorkeusOnPelilaudanUlkopuolella() {
