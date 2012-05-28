@@ -56,7 +56,7 @@ public class SiirtavaPelilauta extends Pelilauta {
      * 
      * @param napinKorkeus
      * @param napinLeveys
-     * @return 
+     * @return true jos siirto onnistuu
      */
     protected boolean siirraVasemmalle(int napinKorkeus, int napinLeveys) {
         if (napinLeveys - 1 < 0) {
@@ -76,7 +76,7 @@ public class SiirtavaPelilauta extends Pelilauta {
      * 
      * @param napinKorkeus
      * @param napinLeveys
-     * @return 
+     * @return true jos siirto onnistuu
      */
     protected boolean siirraYlos(int napinKorkeus, int napinLeveys) {
         if (napinKorkeus - 1 < 0) {
@@ -96,7 +96,7 @@ public class SiirtavaPelilauta extends Pelilauta {
      * 
      * @param napinKorkeus
      * @param napinLeveys
-     * @return 
+     * @return true jos siirto onnistuu
      */
     protected boolean siirraAlas(int napinKorkeus, int napinLeveys) {
         if (napinKorkeus + 1 >= getKorkeus()) {
@@ -130,7 +130,7 @@ public class SiirtavaPelilauta extends Pelilauta {
      *
      * @param napinKorkeus
      * @param napinLeveys
-     * @return
+     * @return true jos siirto johonkin suuntaan onnistuu
      */
     public boolean teeSiirto(int napinKorkeus, int napinLeveys) {
         if (!siirrettavaksiPyydettyNappiOnLaudalla(napinKorkeus, napinLeveys)) {
@@ -146,7 +146,7 @@ public class SiirtavaPelilauta extends Pelilauta {
      * tarkistaa, voiko annettua nappia siirtää mihinkään suuntaan
      * @param napinKorkeus
      * @param napinLeveys
-     * @return 
+     * @return true jos jokin siirto onnistuu
      */
     private boolean voikoNappiaSiirtaaJohonkinSuuntaan(int napinKorkeus, int napinLeveys) {
         return siirraOikealle(napinKorkeus, napinLeveys) || siirraVasemmalle(napinKorkeus, napinLeveys) || (siirraYlos(napinKorkeus, napinLeveys)) || (siirraAlas(napinKorkeus, napinLeveys));

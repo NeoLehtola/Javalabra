@@ -6,11 +6,14 @@ package sovelluslogiikka;
  */
 
 import java.io.File;
+import java.util.Scanner;
 
 public class PelinTallentaja {
     
-    public PelinTallentaja() {
-        
+    private Pelitapahtuma peli;
+    
+    public PelinTallentaja(Pelitapahtuma peli) {
+        this.peli = peli;        
     }
     
     public void tallennaPeli(File tiedosto) {
@@ -18,6 +21,9 @@ public class PelinTallentaja {
     }
     
     public void avaaTallennettuPeli(File tiedosto) throws Exception {
+        Scanner lukija = new Scanner(tiedosto);
+//        int[][] tilanne = 
+        
         
     }
     
