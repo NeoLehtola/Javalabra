@@ -40,6 +40,10 @@ public class Pelilauta {
     public Nappula getNappula(int korkeus, int leveys) {
         return lauta[korkeus][leveys];
     }
+    
+    public void setNappula(int korkeus, int leveys, int tunniste) {
+        
+    }
 
     public int getLeveys() {
         return leveys;
