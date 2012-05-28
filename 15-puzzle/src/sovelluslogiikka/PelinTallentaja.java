@@ -38,16 +38,6 @@ public class PelinTallentaja {
         
     }
     
-    /**
-     * lukee pelitilanteen tiedostosta ja muodostaa pelilaudan oikeilla nappuloiden sijainneilla
-     * @param tiedosto
-     * @throws Exception 
-     */
-    public void avaaTallennettuPeli(File tiedosto) throws Exception {
-        Scanner lukija = new Scanner(tiedosto);
-//        int[][] tilanne = 
-        
-        
-    }
+ 
     
 }

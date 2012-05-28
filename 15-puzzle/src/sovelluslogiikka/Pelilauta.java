@@ -11,11 +11,24 @@ public class Pelilauta {
     private int leveys;
     private int korkeus;
 
+    /**
+     * tätä konstruktoria käytetään, jos aloitetaan kokonaan uusi peli
+     * @param korkeus
+     * @param leveys 
+     */
     public Pelilauta(int korkeus, int leveys) {
         this.korkeus = korkeus;
         this.leveys = leveys;
         lauta = new Nappula[korkeus][leveys];
         asetaNappulatJarjestykseenJaJataViimeinenTyhjaksi();
+    }
+    
+    /**
+     * tämä konstruktori on tallennetun pelin lataamista varten
+     * @param lauta 
+     */
+    public Pelilauta(Nappula[][] lauta) {
+        this.lauta = lauta;
     }
 
 
@@ -42,7 +55,7 @@ public class Pelilauta {
     }
     
     public void setNappula(int korkeus, int leveys, int tunniste) {
-        
+        lauta[korkeus][leveys] = new Nappula(tunniste);
     }
 
     public int getLeveys() {

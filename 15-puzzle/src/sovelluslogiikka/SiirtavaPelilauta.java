@@ -11,11 +11,26 @@ public class SiirtavaPelilauta extends Pelilauta {
 
     private int sekoitusMaara;
 
+    /**
+     * tämä konstruktori on kokonaan uuden pelin luomista varten
+     * @param korkeus
+     * @param leveys
+     * @param sekoitusMaara 
+     */
     public SiirtavaPelilauta(int korkeus, int leveys, int sekoitusMaara) {
         super(korkeus, leveys);
         this.sekoitusMaara = sekoitusMaara;
         sekoitaNappulat();
     }
+    
+    /**
+     * tämä konstruktori on tallennetun pelin lataamista varten
+     * @param lauta 
+     */
+    public SiirtavaPelilauta(Nappula[][] lauta) {
+        super(lauta);
+    }
+    
 
     private void sekoitaNappulat() {
         Random r = new Random();
