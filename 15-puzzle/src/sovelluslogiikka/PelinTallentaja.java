@@ -1,31 +1,29 @@
-
 package sovelluslogiikka;
 
 /**
- * Tämä luokka hoitaa pelitilanteen ja pisteiden tallentamisen
+ * Tämä luokka hoitaa pelitilanteen tallentamisen
  */
-
 import java.io.*;
 import java.util.Scanner;
 
 public class PelinTallentaja {
-    
+
     private Pelitapahtuma peli;
-    
-    public PelinTallentaja(Pelitapahtuma peli) {
-         this.peli = peli;
+    private File file;
+
+    public PelinTallentaja(Pelitapahtuma peli, String tiedostoNimi) {
+        this.peli = peli;
+        file = new File(tiedostoNimi);
+
     }
-    
-    
+
     /**
-     * tallentaa pelitilanteen tiedostoon, eli pelilaudan nappuloiden tunnisteet pilkulla erotettuna
+     * tallentaa pelitilanteen tiedostoon, eli pelilaudan nappuloiden tunnisteet
+     * pilkulla erotettuna
      */
-    public void tallennaPeli()  {
-        
+    public void tallennaPeli() {
         try {
-        File file = new File("Tallennus.txt");
         PrintWriter pw = new PrintWriter(file);
-        
         for (int i = 0; i < peli.getPelilauta().getKorkeus(); i++) {
             for (int j = 0; j < peli.getPelilauta().getLeveys(); j++) {
                 pw.print(peli.getPelilauta().getNappula(i, j).getTunniste() + ",");
@@ -33,11 +31,13 @@ public class PelinTallentaja {
             pw.println();
         }
         } catch (FileNotFoundException e) {
-           
+            
         }
-        
+
+
     }
-    
- 
-    
+
+    public File getFile() {
+        return file;
+    }
 }

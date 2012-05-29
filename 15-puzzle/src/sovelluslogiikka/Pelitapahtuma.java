@@ -1,32 +1,29 @@
 package sovelluslogiikka;
 
 /**
- * tämän luokan metodeilla ohjataan koko pelin kulkua (aloitus, pelaaminen, vuorot, lopetus)
- * 
+ * tämän luokan metodeilla ohjataan koko pelin kulkua (aloitus, pelaaminen,
+ * vuorot, lopetus)
+ *
  *
  */
 public class Pelitapahtuma {
 
     private int vuorojenMaara;
     private SiirtavaPelilauta pelilauta;
-    private PelinTallentaja tallentaja;
 
 //    public Pelitapahtuma() {
 //        
 //    }
-    
     public Pelitapahtuma(int laudanKorkeus, int laudanLeveys, int sekoitusMaara) {
         this.vuorojenMaara = 0;
         this.pelilauta = new SiirtavaPelilauta(laudanKorkeus, laudanLeveys, sekoitusMaara);
-        this.tallentaja = new PelinTallentaja(this);
+
     }
-    
-    
 
     public int getVuorojenMaara() {
         return vuorojenMaara;
     }
-    
+
     /**
      * perussetteri
      */
@@ -36,6 +33,7 @@ public class Pelitapahtuma {
 
     /**
      * tällä metodilla pääsee käsiksi SiirtavaPelilaudan metodiin teeSiirto
+     *
      * @return true jos teeSiirto palauttaa true
      */
     public boolean pelaaYksiVuoroJosSiirtoSallittu(int napinKorkeus, int napinLeveys) {
@@ -60,17 +58,18 @@ public class Pelitapahtuma {
     /**
      * tällä metodilla pääsee käsiksi SiirtavaPelilaudan metodiin lautaValmis(),
      * eli tarkistetaan onko lauta järjestyksessä ja näin ollen peli loppunut
+     *
      * @return true jos lautaValmis palauttaa true
      */
     public boolean peliPaattynyt() {
         return pelilauta.lautaValmis();
     }
-    
+
     public void avaaTallennettuPeli() {
-        
     }
-    
-    public void tallennaPeli() {
-       tallentaja.tallennaPeli();
+
+    public void tallennaPeli(String tiedostoNimi) {
+        PelinTallentaja tallentaja = new PelinTallentaja(this, tiedostoNimi);
+        tallentaja.tallennaPeli();
     }
 }

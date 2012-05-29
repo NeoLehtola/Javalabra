@@ -33,6 +33,10 @@ public class Tekstikayttoliittyma {
      * tämä metodi käynnistää koko pelin
      */
     public void kaynnista() {
+        
+        // tässä pitää valita, haluaako avata vanhan pelin vai aloittaa uuden
+        // tee muutos!!!!
+        
         tulostaAloitustekstitJaLuoUusiPeli();
 
         while (!peli.peliPaattynyt()) {

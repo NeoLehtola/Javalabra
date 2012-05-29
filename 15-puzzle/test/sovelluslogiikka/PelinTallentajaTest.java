@@ -15,8 +15,8 @@ import static org.junit.Assert.*;
  */
 public class PelinTallentajaTest {
     
-    private File file;
     private Pelitapahtuma peli;
+    private PelinTallentaja tallentaja;
     
     public PelinTallentajaTest() {
     }
@@ -31,8 +31,8 @@ public class PelinTallentajaTest {
     
     @Before
     public void setUp() {
-        file = new File("src/sovelluslogiikka/Tallennus.txt");
         peli = new Pelitapahtuma(3, 3, 10000);
+        tallentaja = new PelinTallentaja(peli, "test/sovelluslogiikka/Testitallennus.txt");
     }
     
     @After
@@ -40,12 +40,32 @@ public class PelinTallentajaTest {
     }
     
     @Test
-    public void pelinTallennusOnnistuu() throws Exception {
-        peli.tallennaPeli();
-        Scanner lukija = new Scanner(file);
-        while (lukija.hasNextLine()) {
-            
+    public void tallennusTiedostoOnOlemassa() {      
+        assertTrue(tallentaja.getFile().exists());     
+    }
+    
+    @Test
+    public void tunnistetaanJosTiedostoaEiOle() {
+        tallentaja = new PelinTallentaja(peli, "");
+        assertFalse(tallentaja.getFile().exists());
+    }
+    
+    @Test
+    public void tiedostoonTallentuuJotain() throws Exception {
+        Scanner lukija = new Scanner(tallentaja.getFile());
+        tallentaja.tallennaPeli();
+        int merkkeja = 0; 
+        
+        while (lukija.hasNext()) {
+            lukija.next();
+            merkkeja++;
         }
+        assertTrue(merkkeja > 0);
+        
+        
+    }
+    
+
         
         
     }
@@ -53,4 +73,4 @@ public class PelinTallentajaTest {
 
 
     
-}
+
