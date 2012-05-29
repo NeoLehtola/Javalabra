@@ -22,13 +22,28 @@ public class GUIAloitusruutu extends JPanel {
     
     private void luoKomponentit(Container container) {
         // tee layout
-        JLabel teksti = new JLabel("Tervetuloa pelaamaan 15-puzzlea \n Valitse pelilaudan korkeus ja leveys");
+        JLabel teksti = new JLabel("Tervetuloa pelaamaan 15-puzzlea");
         container.add(teksti);
         
      
     }
     
-    private JPanel luoValinnat() {
+    private JPanel luoValitsinTallennettuVaiUusiPeli() {
+        JPanel panel = new JPanel(new GridLayout(2, 1));
+        
+        JButton tallennettu = new JButton();
+        tallennettu.setText("Avaa tallennettu peli");
+        
+        JButton uusiPeli = new JButton();
+        uusiPeli.setText("Aloita uusi peli");
+        
+        panel.add(tallennettu);
+        panel.add(uusiPeli);
+        
+        return panel;
+    }
+    
+    private JPanel luoLaudanKoonValitsin() {
         JPanel panel = new JPanel(new GridLayout(1, 2));
         
         JButton korkeus = new JButton(koonAlaraja + "");
@@ -40,9 +55,17 @@ public class GUIAloitusruutu extends JPanel {
         return panel;
     }
     
-    private class NapinKuuntelija implements ActionListener {
+    private class koonValitsinKuuntelija implements ActionListener {
         
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            
+        }
         
+    }
+    
+    
+    private class tallennettuVaiUusiKuuntelija implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent ae) {

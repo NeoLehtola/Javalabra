@@ -19,20 +19,30 @@ public class PelinLataaja {
 
     public Pelitapahtuma avaaTallennettuPeli() {
 
-        SiirtavaPelilauta lauta = null;
+        SiirtavaPelilauta uusiLauta = null;
 
         try {
             Scanner lukija = new Scanner(file);
 
+            
+            
             int laudanKorkeus = 0; 
             int laudanLeveys = 0; 
             while (lukija.hasNextLine()) {
                 String[] rivinTunnisteet = lukija.nextLine().split(",");
+                laudanLeveys = rivinTunnisteet.length;
+                laudanKorkeus++;
             }
+            
+
 
         } catch (FileNotFoundException e) {
         }
 
-        return new Pelitapahtuma(lauta);
+        return new Pelitapahtuma(uusiLauta);
     }
+    
+
+    
+    
 }
