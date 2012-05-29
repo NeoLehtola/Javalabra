@@ -23,16 +23,18 @@ public class PelinTallentaja {
      */
     public void tallennaPeli() {
         try {
-        PrintWriter pw = new PrintWriter(file);
-        for (int i = 0; i < peli.getPelilauta().getKorkeus(); i++) {
-            for (int j = 0; j < peli.getPelilauta().getLeveys(); j++) {
-                pw.print(peli.getPelilauta().getNappula(i, j).getTunniste() + ",");
+            PrintWriter pw = new PrintWriter(file);
+            for (int i = 0; i < peli.getPelilauta().getKorkeus(); i++) {
+                for (int j = 0; j < peli.getPelilauta().getLeveys(); j++) {
+                    pw.print(peli.getPelilauta().getNappula(i, j).getTunniste() + ",");
+                }
+                pw.println();
+
             }
-            pw.println();
-        }
+            pw.close();
         } catch (FileNotFoundException e) {
-            
         }
+
 
 
     }

@@ -60,10 +60,30 @@ public class PelinTallentajaTest {
             lukija.next();
             merkkeja++;
         }
-        assertTrue(merkkeja > 0);
-        
-        
+        assertTrue(merkkeja > 0);       
     }
+    
+    @Test
+    public void tiedostoonTallentuuOikeaMaaraMerkkeja() throws Exception {
+        Scanner lukija = new Scanner(tallentaja.getFile());
+        tallentaja.tallennaPeli();
+        int merkkeja = 0;
+        
+        while (lukija.hasNext()) {
+            lukija.next();
+            merkkeja++;
+        }
+        assertEquals(18, merkkeja);
+    }
+    
+//    @Test
+//    public void tunnisteetTallentuvatOikeassaJarjestyksessa() throws Exception {
+//        peli = new Pelitapahtuma(3, 3, 0);
+//        
+//        Scanner lukija = new Scanner(tallentaja.getFile());
+//        tallentaja.tallennaPeli();
+//     
+//    }
     
 
         
