@@ -32,6 +32,10 @@ public class SiirtavaPelilauta extends Pelilauta {
     }
     
 
+    /**
+     * Lauta sekoitetaan nimenomaan tekemällä sallittuja siirtoja, sillä pelilaudan
+     * on oltava ratkaistavissa.
+     */
     private void sekoitaNappulat() {
         Random r = new Random();
         for (int i = 0; i < sekoitusMaara; i++) {
@@ -86,6 +90,41 @@ public class SiirtavaPelilauta extends Pelilauta {
 
         return false;
     }
+    
+    
+//    /**
+//     * jos siirretään vasemmalle, suunta oltava -1, jos oikealle, suunta 1
+//     * @param napinKorkeus
+//     * @param napinLeveys
+//     * @param suunta
+//     * @return 
+//     */
+//    protected boolean siirraVaakasuunnassa(int napinKorkeus, int napinLeveys, int suunta) {
+//       if  (getLauta()[napinKorkeus][napinLeveys + suunta].getTunniste() == -1) {
+//            getLauta()[napinKorkeus][napinLeveys + suunta] = getLauta()[napinKorkeus][napinLeveys];
+//            getLauta()[napinKorkeus][napinLeveys] = new Nappula(-1);
+//            return true;
+//       }
+//    
+//        return false;
+//    }
+    
+//    /**
+//     * jos siirretään ylös, suunta -1, jos alas, suunta 1
+//     * @param napinKorkeus
+//     * @param napinLeveys
+//     * @param suunta
+//     * @return 
+//     */
+//    protected boolean siirraPystysuunnassa(int napinKorkeus, int napinLeveys, int suunta) {
+//        if (getLauta()[napinKorkeus + suunta][napinLeveys].getTunniste() == -1) {
+//            getLauta()[napinKorkeus + suunta][napinLeveys] = getLauta()[napinKorkeus][napinLeveys];
+//            getLauta()[napinKorkeus][napinLeveys] = new Nappula(-1);
+//            return true;
+//        }
+//        
+//        return false;
+//    }
 
     /**
      * 

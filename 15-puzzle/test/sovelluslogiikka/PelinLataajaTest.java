@@ -8,9 +8,9 @@ import static org.junit.Assert.*;
  *
  * @author pklehtol
  */
-public class TallennetunPelinAvaajaTest {
+public class PelinLataajaTest {
     
-    public TallennetunPelinAvaajaTest() {
+    public PelinLataajaTest() {
     }
 
     @BeforeClass

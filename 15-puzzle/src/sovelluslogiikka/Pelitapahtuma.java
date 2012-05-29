@@ -11,9 +11,9 @@ public class Pelitapahtuma {
     private SiirtavaPelilauta pelilauta;
     private PelinTallentaja tallentaja;
 
-    public Pelitapahtuma() {
-        
-    }
+//    public Pelitapahtuma() {
+//        
+//    }
     
     public Pelitapahtuma(int laudanKorkeus, int laudanLeveys, int sekoitusMaara) {
         this.vuorojenMaara = 0;

@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 
-public class TallennetunPelinAvaaja {
+public class PelinLataaja {
     
        /**
      * lukee pelitilanteen tiedostosta ja muodostaa pelilaudan oikeilla nappuloiden sijainneilla
