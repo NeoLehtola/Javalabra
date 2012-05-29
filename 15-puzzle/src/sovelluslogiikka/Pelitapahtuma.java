@@ -11,9 +11,13 @@ public class Pelitapahtuma {
     private int vuorojenMaara;
     private SiirtavaPelilauta pelilauta;
 
-//    public Pelitapahtuma() {
-//        
-//    }
+    public Pelitapahtuma(SiirtavaPelilauta pelilauta) {
+        this.pelilauta = pelilauta;
+        this.vuorojenMaara = 0;
+        // tällä hetkellä valitettavasti tallennuksesta saa etua, eli vuorojen määrät nollautuu kun 
+        // lataa pelin. korjaan asian kunhan perustoiminnallisuudet on ensin kunnossa
+    }
+    
     public Pelitapahtuma(int laudanKorkeus, int laudanLeveys, int sekoitusMaara) {
         this.vuorojenMaara = 0;
         this.pelilauta = new SiirtavaPelilauta(laudanKorkeus, laudanLeveys, sekoitusMaara);

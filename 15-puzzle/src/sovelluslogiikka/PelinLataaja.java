@@ -1,35 +1,38 @@
-
 package sovelluslogiikka;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-
+/**
+ * lukee pelitilanteen tiedostosta ja muodostaa pelilaudan oikeilla nappuloiden
+ * sijainneilla
+ *
+ */
 public class PelinLataaja {
-    
-       /**
-     * lukee pelitilanteen tiedostosta ja muodostaa pelilaudan oikeilla nappuloiden sijainneilla
-     * 
-     */
-    public void avaaTallennettuPeli() {
-        // kesken!!!!
-        try {
-        File file = new File("Tallennus.txt");
-        Scanner lukija = new Scanner(file);
-    
-        // taulukon koko pitää laskea eri tavalla, koska peli-olio luodaan vasta kun tiedosto on luettu
-  //      Nappula[][] tallennettuLauta = new Nappula[peli.getPelilauta().getKorkeus()][peli.getPelilauta().getLeveys()];
-        
-        while (lukija.hasNextLine()) {
-            String rivi = lukija.nextLine();
-            String[] rivinTunnisteet = rivi.split(",");                     
-        }
-        
-        } catch (FileNotFoundException e) {
-            
-        }
-        
+
+    private File file;
+
+    public PelinLataaja(String tiedostoNimi) {
+        file = new File(tiedostoNimi);
     }
-    
+
+    public Pelitapahtuma avaaTallennettuPeli() {
+
+        SiirtavaPelilauta lauta = null;
+
+        try {
+            Scanner lukija = new Scanner(file);
+
+            int laudanKorkeus = 0; 
+            int laudanLeveys = 0; 
+            while (lukija.hasNextLine()) {
+                String[] rivinTunnisteet = lukija.nextLine().split(",");
+            }
+
+        } catch (FileNotFoundException e) {
+        }
+
+        return new Pelitapahtuma(lauta);
+    }
 }

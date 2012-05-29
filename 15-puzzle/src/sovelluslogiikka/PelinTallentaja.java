@@ -31,6 +31,7 @@ public class PelinTallentaja {
                 pw.println();
 
             }
+            // 
             pw.close();
         } catch (FileNotFoundException e) {
         }
