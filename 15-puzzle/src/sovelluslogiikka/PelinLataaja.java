@@ -2,6 +2,7 @@ package sovelluslogiikka;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -12,6 +13,7 @@ import java.util.Scanner;
 public class PelinLataaja {
 
     private File file;
+    private ArrayList<Integer> tunnisteetTalteen;
 
     /**
      * metodi lataa tiedostosta tallennetun pelin ja luo sen pohjalta uuden Pelitapahtuman
@@ -21,27 +23,52 @@ public class PelinLataaja {
         file = new File(tiedostoNimi);
     }
 
-    public Pelitapahtuma avaaTallennettuPeli() {
-
-        SiirtavaPelilauta uusiLauta = null;
+    /**
+     * 
+     * @return uusi pelitapahtuma, jossa pelilauta tallennetun mukainen
+     */
+    
+    // tää on nyt niin valtava metodi että pitää vielä pilkkoa
+    public Pelitapahtuma luoUusiPeliTallennetunPohjalta() {
+        if (!tiedostossaOnTallennettuPeli()) {
+            return null;
+        }
+        
+        
 
         try {
             Scanner lukija = new Scanner(file);
-          
-            int laudanKorkeus = 0; 
+                              
             int laudanLeveys = 0; 
+            this.tunnisteetTalteen = new ArrayList<Integer>(); 
+            
             while (lukija.hasNextLine()) {
                 String[] rivinTunnisteet = lukija.nextLine().split(",");
                 laudanLeveys = rivinTunnisteet.length;
-                laudanKorkeus++;
+                for (int i = 0; i < rivinTunnisteet.length; i++) {
+                    tunnisteetTalteen.add(Integer.parseInt(rivinTunnisteet[i]));                    
+                }
             }
             
-
-
         } catch (FileNotFoundException e) {
         }
+        SiirtavaPelilauta uusiLauta = null;
 
         return new Pelitapahtuma(uusiLauta);
+    }
+    
+    private boolean tiedostossaOnTallennettuPeli() {
+        
+        return false;
+    }
+    
+    private SiirtavaPelilauta luoUusiLauta(int laudanLeveys) {
+        return null;
+    }
+    
+
+    public File getFile() {
+        return file;
     }
     
 

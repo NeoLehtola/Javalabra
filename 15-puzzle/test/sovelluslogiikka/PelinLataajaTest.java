@@ -1,6 +1,6 @@
-
 package sovelluslogiikka;
 
+import java.util.Scanner;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -9,7 +9,9 @@ import static org.junit.Assert.*;
  * @author pklehtol
  */
 public class PelinLataajaTest {
-    
+
+    private PelinLataaja lataaja;
+
     public PelinLataajaTest() {
     }
 
@@ -20,16 +22,50 @@ public class PelinLataajaTest {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-    
+
     @Before
     public void setUp() {
+        lataaja = new PelinLataaja("test/sovelluslogiikka/Testitallennus.txt");
     }
-    
+
     @After
     public void tearDown() {
     }
-    
-    @Test
-    public void 
 
+    @Test
+    public void latausTiedostoOnOlemassa() {
+        assertTrue(lataaja.getFile().exists());
+    }
+
+    @Test
+    public void latausTiedostossaOnTallennettunaJotain() throws Exception {
+        Scanner lukija = new Scanner(lataaja.getFile());
+        int merkkeja = 0;
+
+        while (lukija.hasNext()) {
+            lukija.next();
+            merkkeja++;
+        }
+        assertTrue(merkkeja > 0);
+    }
+    
+//    @Test
+//    public void lataajaLuoOikeanKokoisenPelilaudan() {
+//        
+//    }
+//
+//    @Test
+//    public void tiedostonNumerotLatautuvatOikeassaJarjestyksessaNappulaTaulukonTunnisteiksi() {
+//    }
+    
+    @Test 
+    public void lataajaEiLuoUuttaPeliaJosTiedostoOnTyhja() {
+        lataaja = new PelinLataaja("test/sovelluslogiikka/TyhjaTiedosto.txt");
+        assertNull(lataaja.luoUusiPeliTallennetunPohjalta());
+    }
+    
+//    @Test
+//    public void lataajaEiLuoUuttaPeliaJosTiedostoaEiOle() {
+//        
+//    }
 }
