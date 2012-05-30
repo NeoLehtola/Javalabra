@@ -13,6 +13,10 @@ public class PelinLataaja {
 
     private File file;
 
+    /**
+     * metodi lataa tiedostosta tallennetun pelin ja luo sen pohjalta uuden Pelitapahtuman
+     * @param tiedostoNimi 
+     */
     public PelinLataaja(String tiedostoNimi) {
         file = new File(tiedostoNimi);
     }
@@ -23,9 +27,7 @@ public class PelinLataaja {
 
         try {
             Scanner lukija = new Scanner(file);
-
-            
-            
+          
             int laudanKorkeus = 0; 
             int laudanLeveys = 0; 
             while (lukija.hasNextLine()) {
