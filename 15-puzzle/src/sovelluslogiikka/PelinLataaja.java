@@ -29,10 +29,12 @@ public class PelinLataaja {
      */
     
     // tää on nyt niin valtava metodi että pitää vielä pilkkoa
-    public Pelitapahtuma luoUusiPeliTallennetunPohjalta() {
+    public Pelitapahtuma luoUusiPeliTallennetunPohjalta() throws Exception {
         if (!tiedostossaOnTallennettuPeli()) {
             return null;
         }
+        SiirtavaPelilauta uusiLauta = null;
+        
         
         
 
@@ -49,21 +51,39 @@ public class PelinLataaja {
                     tunnisteetTalteen.add(Integer.parseInt(rivinTunnisteet[i]));                    
                 }
             }
+            uusiLauta = new SiirtavaPelilauta(luoUusiLauta(laudanLeveys));
             
         } catch (FileNotFoundException e) {
         }
-        SiirtavaPelilauta uusiLauta = null;
+        
 
         return new Pelitapahtuma(uusiLauta);
     }
     
-    private boolean tiedostossaOnTallennettuPeli() {
+    // nyt tää tarkistaa että tiedostossa on ylipäätään jotain, ei sitä onko siellä peli. MUUTA!!!
+    private boolean tiedostossaOnTallennettuPeli() throws FileNotFoundException {
+        Scanner lukija = new Scanner(file);
         
-        return false;
+        int merkkeja = 0;
+
+        while (lukija.hasNext()) {
+            lukija.next();
+            merkkeja++;
+        }     
+        return merkkeja > 0;
     }
     
-    private SiirtavaPelilauta luoUusiLauta(int laudanLeveys) {
-        return null;
+    private Nappula[][] luoUusiLauta(int laudanLeveys) {
+        int indeksi = 0;
+        Nappula[][] lauta = new Nappula[tunnisteetTalteen.size() / laudanLeveys][laudanLeveys];
+        for (int i = 0; i < lauta.length; i++) {
+            for (int j = 0; j < lauta[i].length; j++) {
+                lauta[i][j] = new Nappula(tunnisteetTalteen.get(indeksi));
+                indeksi++;
+            }
+        }
+        
+        return lauta;
     }
     
 

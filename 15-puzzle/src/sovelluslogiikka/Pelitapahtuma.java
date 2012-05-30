@@ -69,8 +69,7 @@ public class Pelitapahtuma {
         return pelilauta.lautaValmis();
     }
 
-    public void avaaTallennettuPeli() {
-    }
+
 
     public void tallennaPeli(String tiedostoNimi) {
         PelinTallentaja tallentaja = new PelinTallentaja(this, tiedostoNimi);

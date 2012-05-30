@@ -1,6 +1,8 @@
 package kayttoliittyma;
 
 import java.util.Scanner;
+import sovelluslogiikka.PelinLataaja;
+import sovelluslogiikka.PelinTallentaja;
 import sovelluslogiikka.Pelitapahtuma;
 
 public class Tekstikayttoliittyma {
@@ -32,16 +34,27 @@ public class Tekstikayttoliittyma {
     /**
      * tämä metodi käynnistää koko pelin
      */
-    public void kaynnista() {
-        
-        // tässä pitää valita, haluaako avata vanhan pelin vai aloittaa uuden
-        // tee muutos!!!!
-        
-        tulostaAloitustekstitJaLuoUusiPeli();
+    public void kaynnista() throws Exception {
+        tulostaAloitusTekstit();
 
+        while (true) {
+            int valinta = Integer.parseInt(lukija.nextLine());
+            if (valinta == 1) {
+                luoUusiPeli();
+                break;
+            } else if (valinta == 2) {
+                avaaTallennettuPeli();
+                break;
+            } else {
+                System.out.println("Valitse 1 tai 2");
+            }
+        }
+        
+//        System.out.println("Jos haluat keskeyttää pelin, paina x");
         while (!peli.peliPaattynyt()) {
-            tulostaPelilauta();          
-
+            tulostaPelilauta();
+            
+            
             if (peli.pelaaYksiVuoroJosSiirtoSallittu(kysyKorkeus(), kysyLeveys())) {
                 peli.kasvataVuorojenMaaraa();
             } else {
@@ -53,8 +66,14 @@ public class Tekstikayttoliittyma {
 
     }
 
-    private void tulostaAloitustekstitJaLuoUusiPeli() {
+    private void tulostaAloitusTekstit() {
         System.out.println("Tervetuloa pelaamaan 15-puzzlea.");
+        System.out.println("Valitse 1, jos haluat aloittaa uuden pelin");
+        System.out.println("Valitse 2, jos haluat avata tallennetun pelin");
+    }
+
+    private void luoUusiPeli() {
+
         System.out.println("Valitse laudan leveys ja korkeus"); // valintaväli täytyy lisätä
 
         System.out.print("Korkeus: ");
@@ -64,6 +83,22 @@ public class Tekstikayttoliittyma {
 
         this.peli = new Pelitapahtuma(korkeus, leveys, korkeus * leveys * 1000);
     }
+
+    private void avaaTallennettuPeli() throws Exception {
+        PelinLataaja lataaja = new PelinLataaja("src/sovelluslogiikka/Tallennus.txt");
+        this.peli = lataaja.luoUusiPeliTallennetunPohjalta();
+        if (peli == null) {
+            System.out.println("Ei tallennettua peliä, luodaan uusi peli");
+            luoUusiPeli();
+        }   
+    }
+    
+    private void tallennaNykyinenPeli() throws Exception {
+        PelinTallentaja tallentaja = new PelinTallentaja(peli, "src/sovelluslogiikka/Tallennus.txt");
+        tallentaja.tallennaPeli();
+    }
+    
+  
 
     private int kysyKorkeus() {
         System.out.print("Anna siirrettävän korkeus: (0 - " + (peli.getPelilauta().getKorkeus() - 1) + ")");
