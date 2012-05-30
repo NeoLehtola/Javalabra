@@ -67,16 +67,19 @@ public class PelinTallentajaTest {
     public void tiedostoonTallentuuOikeaMaaraLukuja() throws Exception {
         Scanner lukija = new Scanner(tallentaja.getFile());
         tallentaja.tallennaPeli();
-        int lukuja = 0;
+        int[] luvut = new int[12];
 
-        while (lukija.hasNext()) {
-            String[] rivi = lukija.next().split(",");
-
-            lukuja += rivi.length;
+        for (int i = 0; i < luvut.length; i++) {
+            luvut[i] = lukija.nextInt();
         }
         lukija.close();
-
-        assertEquals(9, lukuja);
+        // lukuja pitää olla ruutujen määrä + 3 (leveys, korkeus, vuorojen määrä)
+        // vuorot voi olla 0, muut ei saa olla
+        for (int i = 0; i < luvut.length; i++) {
+            if (i != 2) {
+                assertNotSame(0, luvut[i]);
+            }
+        }
     }
 
     @Test
@@ -88,6 +91,7 @@ public class PelinTallentajaTest {
 
         int[] taulukko = new int[9];
         int indeksi = 0;
+        lukija.nextLine();
         while (lukija.hasNext()) {
             String[] rivi = lukija.next().split(",");
             for (int i = 0; i < rivi.length; i++) {

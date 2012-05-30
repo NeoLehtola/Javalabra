@@ -13,9 +13,11 @@ public class Main {
         
         
         
-        Scanner lukija = new Scanner(System.in);
-        Tekstikayttoliittyma t = new Tekstikayttoliittyma();
-        t.kaynnista();
+//        Scanner lukija = new Scanner(System.in);
+//        Tekstikayttoliittyma t = new Tekstikayttoliittyma();
+//        t.kaynnista();
+        
+
       
         
     }

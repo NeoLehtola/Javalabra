@@ -71,7 +71,7 @@ public class Pelitapahtuma {
 
 
 
-    public void tallennaPeli(String tiedostoNimi) {
+    public void tallennaPeli(String tiedostoNimi) throws Exception {
         PelinTallentaja tallentaja = new PelinTallentaja(this, tiedostoNimi);
         tallentaja.tallennaPeli();
     }
