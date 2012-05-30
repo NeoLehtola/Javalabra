@@ -30,36 +30,16 @@ public class PelinLataaja {
      * @return uusi pelitapahtuma, jossa pelilauta tallennetun mukainen
      */
     
-    // tää on nyt niin valtava metodi että pitää vielä pilkkoa
+
+    // tää menee nyt niin uusiksi
     public Pelitapahtuma luoUusiPeliTallennetunPohjalta() throws Exception {
         if (!tiedostossaOnTallennettuPeli()) {
             return null;
         }
-        SiirtavaPelilauta uusiLauta = null;
-        
-        
+
         
 
-        try {
-            Scanner lukija = new Scanner(file);
-                              
-            int laudanLeveys = 0; 
-            this.tunnisteetTalteen = new ArrayList<Integer>(); 
-            
-            while (lukija.hasNextLine()) {
-                String[] rivinTunnisteet = lukija.nextLine().split(",");
-                laudanLeveys = rivinTunnisteet.length;
-                for (int i = 0; i < rivinTunnisteet.length; i++) {
-                    tunnisteetTalteen.add(Integer.parseInt(rivinTunnisteet[i]));                    
-                }
-            }
-            uusiLauta = new SiirtavaPelilauta(luoUusiLauta(laudanLeveys));
-            
-        } catch (FileNotFoundException e) {
-        }
-        
-
-        return new Pelitapahtuma(uusiLauta);
+        return new Pelitapahtuma(null);
     }
     
     // nyt tää tarkistaa että tiedostossa on ylipäätään jotain, ei sitä onko siellä peli. MUUTA!!!
