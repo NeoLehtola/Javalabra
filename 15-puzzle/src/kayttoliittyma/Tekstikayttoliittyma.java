@@ -93,6 +93,7 @@ public class Tekstikayttoliittyma {
         }   
     }
     
+    // tämä muuttunee niin, että Tallentajaa ei käytetä suoraan vaan Pelitapahtuman kautta
     private void tallennaNykyinenPeli() throws Exception {
         PelinTallentaja tallentaja = new PelinTallentaja(peli, "src/sovelluslogiikka/Tallennus.txt");
         tallentaja.tallennaPeli();

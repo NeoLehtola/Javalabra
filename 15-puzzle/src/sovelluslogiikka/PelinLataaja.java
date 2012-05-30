@@ -10,6 +10,8 @@ import java.util.Scanner;
  * sijainneilla
  *
  */
+
+// huom! Tämä luokka tulee muuttumaan vielä melkoisen paljon!!! järkevöitän tätä
 public class PelinLataaja {
 
     private File file;

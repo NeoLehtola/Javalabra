@@ -63,6 +63,7 @@ public class PelinTallentajaTest {
         assertTrue(merkkeja > 0);
     }
 
+    // tää on ny tosi kökkö testi, piti vaan saada se äkkiä toimimaan. korjaan jos ehdin
     @Test
     public void tiedostoonTallentuuOikeaMaaraLukuja() throws Exception {
         Scanner lukija = new Scanner(tallentaja.getFile());
@@ -81,7 +82,7 @@ public class PelinTallentajaTest {
             }
         }
     }
-
+    // pitää korjata kun luokkaa on muutettu
     @Test
     public void tunnisteetTallentuvatOikeassaJarjestyksessa() throws Exception {
         peli = new Pelitapahtuma(3, 3, 0);
