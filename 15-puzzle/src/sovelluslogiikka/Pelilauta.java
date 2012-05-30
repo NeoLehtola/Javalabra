@@ -27,6 +27,8 @@ public class Pelilauta {
      * tämä konstruktori on tallennetun pelin lataamista varten
      * @param lauta 
      */
+    
+    // muokkaa tämä niin, että saakin parametrina int-taulukollisen tunnisteita?
     public Pelilauta(Nappula[][] lauta) {
         this.lauta = lauta;
     }

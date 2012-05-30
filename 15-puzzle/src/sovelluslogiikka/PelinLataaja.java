@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class PelinLataaja {
 
     private File file;
-    private ArrayList<Integer> tunnisteetTalteen;
+
 
     /**
      * metodi lataa tiedostosta tallennetun pelin ja luo sen pohjalta uuden Pelitapahtuman
@@ -33,40 +33,31 @@ public class PelinLataaja {
 
     // tää menee nyt niin uusiksi
     public Pelitapahtuma luoUusiPeliTallennetunPohjalta() throws Exception {
-        if (!tiedostossaOnTallennettuPeli()) {
-            return null;
-        }
 
-        
-
-        return new Pelitapahtuma(null);
-    }
-    
-    // nyt tää tarkistaa että tiedostossa on ylipäätään jotain, ei sitä onko siellä peli. MUUTA!!!
-    private boolean tiedostossaOnTallennettuPeli() throws FileNotFoundException {
         Scanner lukija = new Scanner(file);
         
-        int merkkeja = 0;
-
-        while (lukija.hasNext()) {
-            lukija.next();
-            merkkeja++;
-        }     
-        return merkkeja > 0;
+        int laudanKorkeus = lukija.nextInt();
+        int laudanLeveys = lukija.nextInt();
+        int vuorojenMaara = lukija.nextInt();
+        
+        int[] tunnisteet = keraaTunnisteet(lukija, laudanKorkeus, laudanLeveys);
+        
+        lukija.close();
+        
+        return null;
     }
     
-    private Nappula[][] luoUusiLauta(int laudanLeveys) {
-        int indeksi = 0;
-        Nappula[][] lauta = new Nappula[tunnisteetTalteen.size() / laudanLeveys][laudanLeveys];
-        for (int i = 0; i < lauta.length; i++) {
-            for (int j = 0; j < lauta[i].length; j++) {
-                lauta[i][j] = new Nappula(tunnisteetTalteen.get(indeksi));
-                indeksi++;
-            }
+    private int[] keraaTunnisteet(Scanner lukija, int laudanKorkeus, int laudanLeveys) {
+        int[] tunnisteet = new int[laudanKorkeus*laudanLeveys];
+        for (int i = 0; i < tunnisteet.length; i++) {
+            tunnisteet[i] = lukija.nextInt();
         }
-        
-        return lauta;
+        return tunnisteet;
     }
+    
+
+    
+
     
 
     public File getFile() {

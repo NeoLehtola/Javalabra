@@ -11,19 +11,22 @@ public class Pelitapahtuma {
     private int vuorojenMaara;
     private SiirtavaPelilauta pelilauta;
 
-    public Pelitapahtuma(SiirtavaPelilauta pelilauta) {
+    /**
+     * tallennetun pelin avaamiseksi
+     * @param pelilauta
+     * @param vuoroMaara 
+     */
+    public Pelitapahtuma(SiirtavaPelilauta pelilauta, int vuoroMaara) {
         this.pelilauta = pelilauta;
-        this.vuorojenMaara = 0;
-        // tällä hetkellä valitettavasti tallennuksesta saa etua, eli vuorojen määrät nollautuu kun 
-        // lataa pelin. korjaan asian kunhan perustoiminnallisuudet on ensin kunnossa
+        this.vuorojenMaara = vuoroMaara;
+
     }
     
-    public Pelitapahtuma(int laudanKorkeus, int laudanLeveys, int sekoitusMaara) {
-        this.vuorojenMaara = 0;
-        this.pelilauta = new SiirtavaPelilauta(laudanKorkeus, laudanLeveys, sekoitusMaara);
-
-    }
-
+    
+    /**
+     * uutta peliä varten
+     * @return 
+     */
     public int getVuorojenMaara() {
         return vuorojenMaara;
     }

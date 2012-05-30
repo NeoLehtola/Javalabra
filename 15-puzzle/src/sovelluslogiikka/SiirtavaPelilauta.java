@@ -27,6 +27,7 @@ public class SiirtavaPelilauta extends Pelilauta {
      * tämä konstruktori on tallennetun pelin lataamista varten
      * @param lauta 
      */
+    // muokkaa niin että parametriksi taulukollinen int-tunnisteita?
     public SiirtavaPelilauta(Nappula[][] lauta) {
         super(lauta);
     }
