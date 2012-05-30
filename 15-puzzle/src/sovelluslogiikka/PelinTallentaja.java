@@ -4,9 +4,10 @@ package sovelluslogiikka;
  * Tämä luokka hoitaa pelitilanteen tallentamisen
  */
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+
+// tämä luokka alkanee olla kohtuullisen jees
 public class PelinTallentaja {
 
     private Pelitapahtuma peli;

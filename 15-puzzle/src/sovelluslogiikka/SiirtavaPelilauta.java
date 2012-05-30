@@ -90,7 +90,7 @@ public class SiirtavaPelilauta extends Pelilauta {
 
         return false;
     }
-    
+    // muokkaan siirtometodit lopullisesti jahka ehdin
     
 //    /**
 //     * jos siirretään vasemmalle, suunta oltava -1, jos oikealle, suunta 1
