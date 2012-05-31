@@ -1,6 +1,5 @@
 package kayttoliittyma;
 
-import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +8,6 @@ import sovelluslogiikka.Pelitapahtuma;
 
 public class GUIAloitusruutu extends JPanel {
 
-    private Pelitapahtuma peli;
     private int koonAlaraja;
     private int koonYlaraja;
     private int korkeudenValinta = koonAlaraja;

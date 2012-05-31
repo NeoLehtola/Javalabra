@@ -3,7 +3,6 @@ package kayttoliittyma;
 
 //import java.util.Scanner;
 import javax.swing.SwingUtilities;
-import sovelluslogiikka.Pelitapahtuma;
 
 public class Main {
     

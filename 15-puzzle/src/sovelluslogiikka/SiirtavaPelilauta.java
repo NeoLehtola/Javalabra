@@ -48,124 +48,90 @@ public class SiirtavaPelilauta extends Pelilauta {
 
     }
 
-    /**
-     * parametreina annetaan siirrettävän nappulan NYKYINEN SIJAINTI; metodin
-     * täytyy tarkistaa, onko parametrina saadun nappulan oikealla puolella
-     * tyhjä nappi. protected vain siksi että metodeja pystyisi testaamaan
-     * suoraan
-     *
-     * @param napinKorkeus
-     * @param napinLeveys
-     * @return true jos siirto onnistuu, muuten false
-     */
-    protected boolean siirraOikealle(int napinKorkeus, int napinLeveys) {
-        if (napinLeveys + 1 >= getLeveys()) {
-            return false;
-        }
 
-        if (getLauta()[napinKorkeus][napinLeveys + 1].getTunniste() == -1) {
-            getLauta()[napinKorkeus][napinLeveys + 1] = getLauta()[napinKorkeus][napinLeveys];
-            getLauta()[napinKorkeus][napinLeveys] = new Nappula(-1);
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * 
-     * @param napinKorkeus
-     * @param napinLeveys
-     * @return true jos siirto onnistuu
-     */
-    protected boolean siirraVasemmalle(int napinKorkeus, int napinLeveys) {
-        if (napinLeveys - 1 < 0) {
-            return false;
-        }
-
-        if (getLauta()[napinKorkeus][napinLeveys - 1].getTunniste() == -1) {
-            getLauta()[napinKorkeus][napinLeveys - 1] = getLauta()[napinKorkeus][napinLeveys];
-            getLauta()[napinKorkeus][napinLeveys] = new Nappula(-1);
-            return true;
-        }
-
-        return false;
-    }
     // muokkaan siirtometodit lopullisesti jahka ehdin
     
-//    /**
-//     * jos siirretään vasemmalle, suunta oltava -1, jos oikealle, suunta 1
-//     * @param napinKorkeus
-//     * @param napinLeveys
-//     * @param suunta
-//     * @return 
-//     */
-//    protected boolean siirraVaakasuunnassa(int napinKorkeus, int napinLeveys, int suunta) {
-//       if  (getLauta()[napinKorkeus][napinLeveys + suunta].getTunniste() == -1) {
-//            getLauta()[napinKorkeus][napinLeveys + suunta] = getLauta()[napinKorkeus][napinLeveys];
-//            getLauta()[napinKorkeus][napinLeveys] = new Nappula(-1);
-//            return true;
-//       }
-//    
-//        return false;
-//    }
+    /**
+     * jos siirretään vasemmalle, suunta oltava -1, jos oikealle, suunta 1
+     * @param napinKorkeus
+     * @param napinLeveys
+     * @param suunta
+     * @return 
+     */
+    protected boolean siirraVaakasuunnassa(int napinKorkeus, int napinLeveys, int suunta) {
+       if ((suunta == 1 && napinLeveys + 1 >= getLeveys()) || (suunta == -1 &&  napinLeveys - 1 < 0) ) {
+           return false;
+       } 
+       
+       if  (getLauta()[napinKorkeus][napinLeveys + suunta].getTunniste() == -1) {
+            getLauta()[napinKorkeus][napinLeveys + suunta] = getLauta()[napinKorkeus][napinLeveys];
+            getLauta()[napinKorkeus][napinLeveys] = new Nappula(-1);
+            return true;
+       }
     
+        return false;
+    }
+    
+    /**
+     * jos siirretään ylös, suunta -1, jos alas, suunta 1
+     * @param napinKorkeus
+     * @param napinLeveys
+     * @param suunta
+     * @return 
+     */
+    protected boolean siirraPystysuunnassa(int napinKorkeus, int napinLeveys, int suunta) {
+        if ((suunta == 1 && napinKorkeus + 1 >= getKorkeus()) || (suunta == -1 && napinKorkeus - 1 < 0 )) {
+            return false;
+        }
+        
+        if (getLauta()[napinKorkeus + suunta][napinLeveys].getTunniste() == -1) {
+            getLauta()[napinKorkeus + suunta][napinLeveys] = getLauta()[napinKorkeus][napinLeveys];
+            getLauta()[napinKorkeus][napinLeveys] = new Nappula(-1);
+            return true;
+        }
+        
+        return false;
+    }
+
 //    /**
-//     * jos siirretään ylös, suunta -1, jos alas, suunta 1
+//     * 
 //     * @param napinKorkeus
 //     * @param napinLeveys
-//     * @param suunta
-//     * @return 
+//     * @return true jos siirto onnistuu
 //     */
-//    protected boolean siirraPystysuunnassa(int napinKorkeus, int napinLeveys, int suunta) {
-//        if (getLauta()[napinKorkeus + suunta][napinLeveys].getTunniste() == -1) {
-//            getLauta()[napinKorkeus + suunta][napinLeveys] = getLauta()[napinKorkeus][napinLeveys];
+//    protected boolean siirraYlos(int napinKorkeus, int napinLeveys) {
+//        if (napinKorkeus - 1 < 0) {
+//            return false;
+//        }
+//
+//        if (getLauta()[napinKorkeus - 1][napinLeveys].getTunniste() == -1) {
+//            getLauta()[napinKorkeus - 1][napinLeveys] = getLauta()[napinKorkeus][napinLeveys];
 //            getLauta()[napinKorkeus][napinLeveys] = new Nappula(-1);
 //            return true;
 //        }
-//        
+//
 //        return false;
 //    }
-
-    /**
-     * 
-     * @param napinKorkeus
-     * @param napinLeveys
-     * @return true jos siirto onnistuu
-     */
-    protected boolean siirraYlos(int napinKorkeus, int napinLeveys) {
-        if (napinKorkeus - 1 < 0) {
-            return false;
-        }
-
-        if (getLauta()[napinKorkeus - 1][napinLeveys].getTunniste() == -1) {
-            getLauta()[napinKorkeus - 1][napinLeveys] = getLauta()[napinKorkeus][napinLeveys];
-            getLauta()[napinKorkeus][napinLeveys] = new Nappula(-1);
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * 
-     * @param napinKorkeus
-     * @param napinLeveys
-     * @return true jos siirto onnistuu
-     */
-    protected boolean siirraAlas(int napinKorkeus, int napinLeveys) {
-        if (napinKorkeus + 1 >= getKorkeus()) {
-            return false;
-        }
-
-        if (getLauta()[napinKorkeus + 1][napinLeveys].getTunniste() == -1) {
-            getLauta()[napinKorkeus + 1][napinLeveys] = getLauta()[napinKorkeus][napinLeveys];
-            getLauta()[napinKorkeus][napinLeveys] = new Nappula(-1);
-            return true;
-        }
-
-        return false;
-    }
+//
+//    /**
+//     * 
+//     * @param napinKorkeus
+//     * @param napinLeveys
+//     * @return true jos siirto onnistuu
+//     */
+//    protected boolean siirraAlas(int napinKorkeus, int napinLeveys) {
+//        if (napinKorkeus + 1 >= getKorkeus()) {
+//            return false;
+//        }
+//
+//        if (getLauta()[napinKorkeus + 1][napinLeveys].getTunniste() == -1) {
+//            getLauta()[napinKorkeus + 1][napinLeveys] = getLauta()[napinKorkeus][napinLeveys];
+//            getLauta()[napinKorkeus][napinLeveys] = new Nappula(-1);
+//            return true;
+//        }
+//
+//        return false;
+//    }
 
     /**
      * tarkistaa siirrettävän napin koordinaatit
@@ -204,7 +170,7 @@ public class SiirtavaPelilauta extends Pelilauta {
      * @return true jos jokin siirto onnistuu
      */
     private boolean voikoNappiaSiirtaaJohonkinSuuntaan(int napinKorkeus, int napinLeveys) {
-        return siirraOikealle(napinKorkeus, napinLeveys) || siirraVasemmalle(napinKorkeus, napinLeveys) || (siirraYlos(napinKorkeus, napinLeveys)) || (siirraAlas(napinKorkeus, napinLeveys));
+        return siirraVaakasuunnassa(napinKorkeus, napinLeveys, 1) || siirraVaakasuunnassa(napinKorkeus, napinLeveys, -1)|| (siirraPystysuunnassa(napinKorkeus, napinLeveys, -1)) || (siirraPystysuunnassa(napinKorkeus, napinLeveys, 1));
 
     }
 

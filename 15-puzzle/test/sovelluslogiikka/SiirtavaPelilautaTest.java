@@ -58,54 +58,55 @@ public class SiirtavaPelilautaTest {
 
     @Test
     public void lautaValmisEiPaastaLapiMelkeinValmista() {
-        kayttaja.siirraOikealle(3, 1);
+        kayttaja.siirraVaakasuunnassa(3, 1, 1);
         assertFalse(kayttaja.lautaValmis());
     }
 
     @Test
     public void siirraOikealleToimiiKunOikeallaTyhjaa() {
-        assertTrue(kayttaja.siirraOikealle(3, 1));
+        assertTrue(kayttaja.siirraVaakasuunnassa(3, 1, 1));
 
     }
 
     @Test
     public void siirraOikeallePalauttaaFalseKunOllaanReunassa() {
-        assertFalse(kayttaja.siirraOikealle(3, 2));
+        assertFalse(kayttaja.siirraVaakasuunnassa(3, 2, 1));
 
     }
 
+    // tää ei toimi
     @Test
     public void siirraVasemmalleToimiiKunVasemmallaTyhjaa() {
-        kayttaja.siirraOikealle(3, 1);
-        assertTrue(kayttaja.siirraVasemmalle(3, 2));
+        kayttaja.siirraVaakasuunnassa(3, 1, 1);
+        assertTrue(kayttaja.siirraVaakasuunnassa(3, 2, -1));
 
     }
 
     @Test
     public void siirraVasemmallePalauttaaFalseKunOllaanReunassa() {
-        assertFalse(kayttaja.siirraVasemmalle(3, 0));
+        assertFalse(kayttaja.siirraVaakasuunnassa(3, 0, -1));
 
     }
 
     @Test
     public void siirraYlosToimiiKunYlapuolellaTyhjaa() {
-        kayttaja.siirraAlas(2, 2);
-        assertTrue(kayttaja.siirraYlos(3, 2));
+        kayttaja.siirraPystysuunnassa(2, 2, 1);
+        assertTrue(kayttaja.siirraPystysuunnassa(3, 2, -1));
     }
 
     @Test
     public void siirraYlosPalauttaaFalseKunOllaanYlareunassa() {
-        assertFalse(kayttaja.siirraYlos(0, 2));
+        assertFalse(kayttaja.siirraPystysuunnassa(0, 2, -1));
     }
 
     @Test
     public void siirraAlasToimiiKunAlapuolellaTyhjaa() {
-        assertTrue(kayttaja.siirraAlas(2, 2));
+        assertTrue(kayttaja.siirraPystysuunnassa(2, 2, 1));
     }
 
     @Test
     public void siirraAlasPalauttaaFalseKunOllaanAlareunassa() {
-        assertFalse(kayttaja.siirraAlas(3, 1));
+        assertFalse(kayttaja.siirraPystysuunnassa(3, 1, 1));
     }
     
     @Test
