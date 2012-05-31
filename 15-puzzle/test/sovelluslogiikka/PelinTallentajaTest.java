@@ -4,15 +4,16 @@
  */
 package sovelluslogiikka;
 
-import java.io.File;
 import java.util.Scanner;
-import org.junit.*;
 import static org.junit.Assert.*;
+import org.junit.*;
 
 /**
  *
  * @author pklehtol
  */
+
+// luokka korjattu
 public class PelinTallentajaTest {
 
     private Pelitapahtuma peli;
@@ -63,52 +64,73 @@ public class PelinTallentajaTest {
         assertTrue(merkkeja > 0);
     }
 
-    // tää on ny tosi kökkö testi, piti vaan saada se äkkiä toimimaan. korjaan jos ehdin
     @Test
     public void tiedostoonTallentuuOikeaMaaraLukuja() throws Exception {
         Scanner lukija = new Scanner(tallentaja.getFile());
         tallentaja.tallennaPeli();
-        int[] luvut = new int[12];
+        int lukuja = 0;
 
-        for (int i = 0; i < luvut.length; i++) {
-            luvut[i] = lukija.nextInt();
+        while (lukija.hasNextInt()) {
+            lukija.nextInt();
+            lukuja++;
         }
-        lukija.close();
-        // lukuja pitää olla ruutujen määrä + 3 (leveys, korkeus, vuorojen määrä)
-        // vuorot voi olla 0, muut ei saa olla
-        for (int i = 0; i < luvut.length; i++) {
-            if (i != 2) {
-                assertNotSame(0, luvut[i]);
-            }
-        }
+        // lukuja oltava nappuloiden määrä + 3: korkeus, leveys ja vuorojen määrä
+        assertEquals(12, lukuja);
+
     }
-    // pitää korjata kun luokkaa on muutettu
+
+    @Test
+    public void laudanKorkeusTallentuuOikein() throws Exception {
+        Scanner lukija = new Scanner(tallentaja.getFile());
+        tallentaja.tallennaPeli();
+
+        assertEquals(3, lukija.nextInt());
+    }
+
+    @Test
+    public void laudanLeveysTallentuuOikein() throws Exception {
+        peli = new Pelitapahtuma(3, 4, 1000);
+        tallentaja = new PelinTallentaja(peli, "test/sovelluslogiikka/Testitallennus.txt");
+        Scanner lukija = new Scanner(tallentaja.getFile());
+        tallentaja.tallennaPeli();
+        // hypätään korkeuden yli
+        lukija.nextInt();
+        assertEquals(4, lukija.nextInt());
+    }
+
+    @Test
+    public void vuorojenMaaraTallentuuOikein() throws Exception {
+        Scanner lukija = new Scanner(tallentaja.getFile());
+
+        for (int i = 0; i < 5; i++) {
+            peli.kasvataVuorojenMaaraa();
+        }
+
+        tallentaja.tallennaPeli();
+        lukija.nextInt();
+        lukija.nextInt();
+        // hypättiin kolmanteen lukuun eli vuoroihin
+        assertEquals(5, lukija.nextInt());
+    }
+
     @Test
     public void tunnisteetTallentuvatOikeassaJarjestyksessa() throws Exception {
         peli = new Pelitapahtuma(3, 3, 0);
         tallentaja = new PelinTallentaja(peli, "test/sovelluslogiikka/Testitallennus.txt");
         Scanner lukija = new Scanner(tallentaja.getFile());
         tallentaja.tallennaPeli();
-
-        int[] taulukko = new int[9];
-        int indeksi = 0;
+        
+        // hypätään eka rivi yli
         lukija.nextLine();
-        while (lukija.hasNext()) {
-            String[] rivi = lukija.next().split(",");
-            for (int i = 0; i < rivi.length; i++) {
-                taulukko[indeksi] = Integer.parseInt(rivi[i]);
-                indeksi++;
-            }
+        
+        int i = 1; 
+        while (i <= 8) {
+            assertEquals(i, lukija.nextInt());
+            i++;
         }
-        lukija.close();
+    
 
-        for (int i = 0; i < 9; i++) {
-            if (i == 8) {
-                assertEquals(-1, taulukko[i]);
-            } else {
-                assertEquals(i+1, taulukko[i]);
-            }
-        }
+
 
 
     }

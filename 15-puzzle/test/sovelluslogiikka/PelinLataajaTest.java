@@ -49,29 +49,22 @@ public class PelinLataajaTest {
         assertTrue(merkkeja > 0);
     }
     
-    @Test
-    public void lataajaLuoOikeanKokoisenPelilaudanJosLautaOnNelio() throws Exception{
-        PelinTallentaja tallentaja = new PelinTallentaja(new Pelitapahtuma(3, 3, 100), "test/sovelluslogiikka/Testitallennus.txt");
-        tallentaja.tallennaPeli();
-        Pelitapahtuma uusi = lataaja.luoUusiPeliTallennetunPohjalta();
-        assertEquals(3, uusi.getPelilauta().getKorkeus());
-//        assertEquals(3, uusi.getPelilauta().getLeveys());
-    }
+
 //
 //    @Test
 //    public void tiedostonNumerotLatautuvatOikeassaJarjestyksessaNappulaTaulukonTunnisteiksi() {
 //    }
     
-    @Test
-    public void lataajaLuoUudenPelinJosTiedostoOK() throws Exception {
-        assertNotNull(lataaja.luoUusiPeliTallennetunPohjalta());
-    }
-    
-    @Test 
-    public void lataajaEiLuoUuttaPeliaJosTiedostoOnTyhja() throws Exception {
-        lataaja = new PelinLataaja("test/sovelluslogiikka/TyhjaTiedosto.txt");
-        assertNull(lataaja.luoUusiPeliTallennetunPohjalta());
-    }
+//    @Test
+//    public void lataajaLuoUudenPelinJosTiedostoOK() throws Exception {
+//        assertNotNull(lataaja.luoUusiPeliTallennetunPohjalta());
+//    }
+//    
+//    @Test 
+//    public void lataajaEiLuoUuttaPeliaJosTiedostoOnTyhja() throws Exception {
+//        lataaja = new PelinLataaja("test/sovelluslogiikka/TyhjaTiedosto.txt");
+//        assertNull(lataaja.luoUusiPeliTallennetunPohjalta());
+//    }
     
 //    @Test
 //    public void lataajaEiLuoUuttaPeliaJosTiedostoaEiOle() {
