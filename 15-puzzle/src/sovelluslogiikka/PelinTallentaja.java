@@ -5,9 +5,10 @@ package sovelluslogiikka;
  */
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 
-// tämä luokka alkanee olla kohtuullisen jees
+// yhdistänkö tämän ja lataajan? harkinnassa
 public class PelinTallentaja {
 
     private Pelitapahtuma peli;
@@ -40,12 +41,16 @@ public class PelinTallentaja {
         }
         // 
         pw.close();
-
-
-
-
-
     }
+    
+
+    
+    public void lataaTallennettuPeli() throws Exception {
+        Scanner lukija = new Scanner(file);
+        
+    }
+    
+    
 
     public File getFile() {
         return file;

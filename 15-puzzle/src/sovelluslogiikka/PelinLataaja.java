@@ -1,8 +1,6 @@
 package sovelluslogiikka;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -11,7 +9,11 @@ import java.util.Scanner;
  *
  */
 
-// huom! Tämä luokka tulee muuttumaan vielä melkoisen paljon!!! järkevöitän tätä
+
+/* Näillä näkymin tää luokka häipyy. yhdistän tallentajaan
+ */
+
+
 public class PelinLataaja {
 
     private File file;
@@ -31,7 +33,7 @@ public class PelinLataaja {
      */
     
 
-    // tää menee nyt niin uusiksi
+
     public Pelitapahtuma luoUusiPeliTallennetunPohjalta() throws Exception {
 
         Scanner lukija = new Scanner(file);
@@ -39,20 +41,37 @@ public class PelinLataaja {
         int laudanKorkeus = lukija.nextInt();
         int laudanLeveys = lukija.nextInt();
         int vuorojenMaara = lukija.nextInt();
-        
-        int[] tunnisteet = keraaTunnisteet(lukija, laudanKorkeus, laudanLeveys);
-        
         lukija.close();
         
-        return null;
+        int[] tunnisteet = keraaTunnisteet(laudanKorkeus, laudanLeveys);
+        SiirtavaPelilauta uusiPelilauta = new SiirtavaPelilauta(luoLauta(laudanKorkeus, laudanLeveys, tunnisteet));
+        
+        
+        
+        return new Pelitapahtuma(uusiPelilauta, vuorojenMaara);
     }
     
-    private int[] keraaTunnisteet(Scanner lukija, int laudanKorkeus, int laudanLeveys) {
+    private int[] keraaTunnisteet(int laudanKorkeus, int laudanLeveys) throws Exception {
+        Scanner lukija = new Scanner(file);
+        lukija.nextLine();
         int[] tunnisteet = new int[laudanKorkeus*laudanLeveys];
         for (int i = 0; i < tunnisteet.length; i++) {
             tunnisteet[i] = lukija.nextInt();
         }
         return tunnisteet;
+    }
+    
+    private Nappula[][] luoLauta(int laudanKorkeus, int laudanLeveys, int[] tunnisteet) {
+        Nappula[][] lauta = new Nappula[laudanKorkeus][laudanLeveys];
+        int seuraavaTunniste = 0; 
+        
+        for (int i = 0; i < lauta.length; i++) {
+            for (int j = 0; j < lauta[i].length; j++) {
+                lauta[i][j] = new Nappula(tunnisteet[seuraavaTunniste]);
+                seuraavaTunniste++;
+            }
+        }
+        return lauta;
     }
     
 

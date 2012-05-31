@@ -33,9 +33,11 @@ public class GUI implements Runnable {
     private void luoKomponentit(Container container) {
         // jos tämä luokin aloitusruudun, joka sitten puolestaan luo annetun kokoisen pelilaudan
         
+//        GUIAloitusruutu aloitus = new GUIAloitusruutu();
         GUIPelilauta lauta = new GUIPelilauta(peli);
         
 //        container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
+//        container.add(aloitus);
         container.add(lauta);
 //        container.add();
     }
