@@ -30,6 +30,7 @@ public class SiirtavaPelilauta extends Pelilauta {
     // muokkaa niin että parametriksi taulukollinen int-tunnisteita?
     public SiirtavaPelilauta(Nappula[][] lauta) {
         super(lauta);
+        this.sekoitusMaara = 0;
     }
     
 
@@ -93,45 +94,7 @@ public class SiirtavaPelilauta extends Pelilauta {
         return false;
     }
 
-//    /**
-//     * 
-//     * @param napinKorkeus
-//     * @param napinLeveys
-//     * @return true jos siirto onnistuu
-//     */
-//    protected boolean siirraYlos(int napinKorkeus, int napinLeveys) {
-//        if (napinKorkeus - 1 < 0) {
-//            return false;
-//        }
-//
-//        if (getLauta()[napinKorkeus - 1][napinLeveys].getTunniste() == -1) {
-//            getLauta()[napinKorkeus - 1][napinLeveys] = getLauta()[napinKorkeus][napinLeveys];
-//            getLauta()[napinKorkeus][napinLeveys] = new Nappula(-1);
-//            return true;
-//        }
-//
-//        return false;
-//    }
-//
-//    /**
-//     * 
-//     * @param napinKorkeus
-//     * @param napinLeveys
-//     * @return true jos siirto onnistuu
-//     */
-//    protected boolean siirraAlas(int napinKorkeus, int napinLeveys) {
-//        if (napinKorkeus + 1 >= getKorkeus()) {
-//            return false;
-//        }
-//
-//        if (getLauta()[napinKorkeus + 1][napinLeveys].getTunniste() == -1) {
-//            getLauta()[napinKorkeus + 1][napinLeveys] = getLauta()[napinKorkeus][napinLeveys];
-//            getLauta()[napinKorkeus][napinLeveys] = new Nappula(-1);
-//            return true;
-//        }
-//
-//        return false;
-//    }
+
 
     /**
      * tarkistaa siirrettävän napin koordinaatit

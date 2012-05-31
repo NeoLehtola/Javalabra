@@ -31,6 +31,8 @@ public class Pelilauta {
     // muokkaa tämä niin, että saakin parametrina int-taulukollisen tunnisteita?
     public Pelilauta(Nappula[][] lauta) {
         this.lauta = lauta;
+//        this.korkeus = lauta.length;
+//        this.leveys = lauta[korkeus].length;
     }
 
 
@@ -71,5 +73,15 @@ public class Pelilauta {
     public Nappula[][] getLauta() {
         return lauta;
     }
+
+    public void setKorkeus(int korkeus) {
+        this.korkeus = korkeus;
+    }
+
+    public void setLeveys(int leveys) {
+        this.leveys = leveys;
+    }
+    
+    
 
 }

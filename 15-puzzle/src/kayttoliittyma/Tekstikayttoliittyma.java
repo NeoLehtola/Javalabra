@@ -51,7 +51,7 @@ public class Tekstikayttoliittyma {
         }
         
 //        System.out.println("Jos haluat keskeyttää pelin, paina x");
-        while (!peli.peliPaattynyt()) {
+        while (true) {
             tulostaPelilauta();
             
             
@@ -59,6 +59,9 @@ public class Tekstikayttoliittyma {
                 peli.kasvataVuorojenMaaraa();
             } else {
                 System.out.println("Siirto ei ole sallittu. Anna uusi sijainti.");
+            }
+            if (peli.peliPaattynyt()) {
+                break;
             }
         }
         System.out.println("Vuoroja " + peli.getVuorojenMaara());

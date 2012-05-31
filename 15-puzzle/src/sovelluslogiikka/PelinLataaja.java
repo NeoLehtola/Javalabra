@@ -42,10 +42,12 @@ public class PelinLataaja {
         int laudanLeveys = lukija.nextInt();
         int vuorojenMaara = lukija.nextInt();
         lukija.close();
+
         
         int[] tunnisteet = keraaTunnisteet(laudanKorkeus, laudanLeveys);
         SiirtavaPelilauta uusiPelilauta = new SiirtavaPelilauta(luoLauta(laudanKorkeus, laudanLeveys, tunnisteet));
-        
+        uusiPelilauta.setKorkeus(laudanKorkeus);
+        uusiPelilauta.setLeveys(laudanLeveys);
         
         
         return new Pelitapahtuma(uusiPelilauta, vuorojenMaara);
