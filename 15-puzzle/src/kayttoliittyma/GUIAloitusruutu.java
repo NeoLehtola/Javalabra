@@ -13,7 +13,6 @@ public class GUIAloitusruutu extends JPanel {
 
 
     public GUIAloitusruutu() {
-
         luoKomponentit();
     }
 
@@ -45,11 +44,11 @@ public class GUIAloitusruutu extends JPanel {
 
 
     
-    private JButton luoUusiGuiPelilauta() {
-        JButton nappi = new JButton("Valmis");
-        nappi.addActionListener(new GUILaudanLuovaNapinKuuntelija());
-        return nappi;
-    }
+//    private JButton luoUusiGuiPelilauta() {
+//        JButton nappi = new JButton("Valmis");
+//        nappi.addActionListener(new GUILaudanLuovaNapinKuuntelija());
+//        return nappi;
+//    }
 
 
 
@@ -58,11 +57,10 @@ public class GUIAloitusruutu extends JPanel {
         @Override
         public void actionPerformed(ActionEvent ae) {
             removeAll();
-            JLabel label = new JLabel("vasen: korkeus, oikea: leveys");
-            add(label);
+
 
             add(new GUILaudanKoonValintaRuutu());
-            add(luoUusiGuiPelilauta());
+//            add(luoUusiGuiPelilauta());
             validate();
         }
     }

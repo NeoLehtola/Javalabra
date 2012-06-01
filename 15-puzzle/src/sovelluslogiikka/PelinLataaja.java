@@ -1,16 +1,13 @@
 package sovelluslogiikka;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
  * lukee pelitilanteen tiedostosta ja muodostaa pelilaudan oikeilla nappuloiden
  * sijainneilla
  *
- */
-
-
-/* Näillä näkymin tää luokka häipyy. yhdistän tallentajaan
  */
 
 
@@ -28,32 +25,46 @@ public class PelinLataaja {
     }
 
     /**
-     * 
+     * Metodi kerää tallennustiedostosta laudan korkeuden ja leveyden, tallennetun pelin
+     * vuorojen määrän sekä nappuloiden tunnisteet apumetodin avulla. 
      * @return uusi pelitapahtuma, jossa pelilauta tallennetun mukainen
      */
     
 
 
-    public Pelitapahtuma luoUusiPeliTallennetunPohjalta() throws Exception {
+    public Pelitapahtuma luoUusiPeliTallennetunPohjalta() {
 
+        try {
         Scanner lukija = new Scanner(file);
+        
+        // jos tiedosto on tyhjä, palautetaan null
+        if (!lukija.hasNextInt()) {
+            return null;
+        }
         
         int laudanKorkeus = lukija.nextInt();
         int laudanLeveys = lukija.nextInt();
         int vuorojenMaara = lukija.nextInt();
         lukija.close();
-
-        
+      
         int[] tunnisteet = keraaTunnisteet(laudanKorkeus, laudanLeveys);
-        SiirtavaPelilauta uusiPelilauta = new SiirtavaPelilauta(luoLauta(laudanKorkeus, laudanLeveys, tunnisteet));
-        uusiPelilauta.setKorkeus(laudanKorkeus);
-        uusiPelilauta.setLeveys(laudanLeveys);
-        
+        SiirtavaPelilauta uusiPelilauta = luoUusiPelilauta(laudanKorkeus, laudanLeveys, tunnisteet);
         
         return new Pelitapahtuma(uusiPelilauta, vuorojenMaara);
+        } catch (FileNotFoundException e) {
+            return null;
+        }
     }
     
-    private int[] keraaTunnisteet(int laudanKorkeus, int laudanLeveys) throws Exception {
+    /**
+     * apumetodi, joka lataa tiedostosta tallennetun pelin nappien tunnisteet
+     * @param laudanKorkeus
+     * @param laudanLeveys
+     * @return tunnisteet int-taulukkona
+     *  
+     */
+    private int[] keraaTunnisteet(int laudanKorkeus, int laudanLeveys) {
+        try {
         Scanner lukija = new Scanner(file);
         lukija.nextLine();
         int[] tunnisteet = new int[laudanKorkeus*laudanLeveys];
@@ -61,7 +72,20 @@ public class PelinLataaja {
             tunnisteet[i] = lukija.nextInt();
         }
         return tunnisteet;
+        } catch (FileNotFoundException e) {
+            return null;
+        }
     }
+    
+    /**
+     * apumetodi, joka luo ladattujen tunnisteiden pohjalta Nappula-olioista koostuvan
+     * laudan. Tätä käytetään parametrina kun luodaan uusi Pelitapahtuma metodissa
+     * luoUusiPeliTallennetunPohjalta().
+     * @param laudanKorkeus
+     * @param laudanLeveys
+     * @param tunnisteet
+     * @return 
+     */
     
     private Nappula[][] luoLauta(int laudanKorkeus, int laudanLeveys, int[] tunnisteet) {
         Nappula[][] lauta = new Nappula[laudanKorkeus][laudanLeveys];
@@ -76,10 +100,27 @@ public class PelinLataaja {
         return lauta;
     }
     
-
+    /**
+     * apumetodi, joka luo uuden SiirtavaPelilauta-luokan ilmentymän.
+     * @param laudanKorkeus
+     * @param laudanLeveys
+     * @param tunnisteet
+     * @return 
+     */
+    private SiirtavaPelilauta luoUusiPelilauta(int laudanKorkeus, int laudanLeveys, int[] tunnisteet) {
+        SiirtavaPelilauta uusiPelilauta = new SiirtavaPelilauta(luoLauta(laudanKorkeus, laudanLeveys, tunnisteet));
+        uusiPelilauta.setKorkeus(laudanKorkeus);
+        uusiPelilauta.setLeveys(laudanLeveys);
+        return uusiPelilauta;
+    }
     
 
     
+
+    /**
+     * tämä on vain testejä varten
+     * @return 
+     */
 
     public File getFile() {
         return file;

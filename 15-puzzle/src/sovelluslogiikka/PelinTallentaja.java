@@ -44,6 +44,10 @@ public class PelinTallentaja {
     }
         
 
+    /**
+     * testejä varten
+     * @return 
+     */
     public File getFile() {
         return file;
     }

@@ -4,10 +4,11 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class GUILaudanKoonValintaRuutu extends JPanel {
-    
+
     private int koonAlaraja;
     private int koonYlaraja;
     private int korkeudenValinta = koonAlaraja;
@@ -21,6 +22,10 @@ public class GUILaudanKoonValintaRuutu extends JPanel {
 
     private void luoKomponentit() {
         GridLayout layout = new GridLayout(3, 1);
+        JLabel label = new JLabel("vasen: korkeus, oikea: leveys");
+        add(label);
+        add(luoLaudanKoonValitsin());
+
         setLayout(layout);
 
     }
@@ -39,8 +44,8 @@ public class GUILaudanKoonValintaRuutu extends JPanel {
 
         return panel;
     }
-    
-        // kannattaisiko tehdä omat kuuntelijat korkeus- ja leveysnapeille?
+
+    // kannattaisiko tehdä omat kuuntelijat korkeus- ja leveysnapeille?
     private class KoonValitsinKuuntelija implements ActionListener {
 
         private JButton nappi;
@@ -51,9 +56,9 @@ public class GUILaudanKoonValintaRuutu extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            
-            
-            
+
+
+
             int nro = Integer.parseInt(nappi.getText());
             if (nro < koonYlaraja) {
                 nro++;
@@ -61,8 +66,8 @@ public class GUILaudanKoonValintaRuutu extends JPanel {
             }
             // tälle metodille pitäis jotenkin saattaa tiedoksi, onko kyseessä korkeus vai leveys.
             korkeudenValinta++;
-            
-            
+
+
         }
     }
 }

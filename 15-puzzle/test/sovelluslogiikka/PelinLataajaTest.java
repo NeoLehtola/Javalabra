@@ -48,26 +48,38 @@ public class PelinLataajaTest {
         }
         assertTrue(merkkeja > 0);
     }
-    
 
-//
-//    @Test
-//    public void tiedostonNumerotLatautuvatOikeassaJarjestyksessaNappulaTaulukonTunnisteiksi() {
-//    }
     
-//    @Test
-//    public void lataajaLuoUudenPelinJosTiedostoOK() throws Exception {
-//        assertNotNull(lataaja.luoUusiPeliTallennetunPohjalta());
-//    }
-//    
-//    @Test 
-//    public void lataajaEiLuoUuttaPeliaJosTiedostoOnTyhja() throws Exception {
-//        lataaja = new PelinLataaja("test/sovelluslogiikka/TyhjaTiedosto.txt");
-//        assertNull(lataaja.luoUusiPeliTallennetunPohjalta());
-//    }
+    @Test
+    public void lataajaLuoUudenPelinJosTiedostoOK() throws Exception {
+        assertNotNull(lataaja.luoUusiPeliTallennetunPohjalta());
+    }
     
-//    @Test
-//    public void lataajaEiLuoUuttaPeliaJosTiedostoaEiOle() {
-//        
-//    }
+    @Test 
+    public void lataajaEiLuoUuttaPeliaJosTiedostoOnTyhja() throws Exception {
+        lataaja = new PelinLataaja("test/sovelluslogiikka/TyhjaTiedosto.txt");
+        assertNull(lataaja.luoUusiPeliTallennetunPohjalta());
+    }
+    
+    @Test
+    public void lataajaEiLuoUuttaPeliaJosTiedostoaEiOle() throws Exception {
+        // PelinLataaja catchaa poikkeuksen ja palauttaa null
+        lataaja = new PelinLataaja("");
+        assertNull(lataaja.luoUusiPeliTallennetunPohjalta());     
+    }
+    
+    @Test
+    public void uudenPelinTunnisteetOvatOikein() throws Exception {
+        Scanner lukija = new Scanner(lataaja.getFile());
+        Pelitapahtuma uusi = lataaja.luoUusiPeliTallennetunPohjalta();
+        
+        // hypätään eka rivi yli, se ei kuulu pelilautaan
+        lukija.nextLine();
+        
+        for (int i = 0; i < uusi.getPelilauta().getKorkeus(); i++) {
+            for (int j = 0; j < uusi.getPelilauta().getLeveys(); j++) {
+                assertEquals(uusi.getPelilauta().getNappula(i, j).getTunniste(), lukija.nextInt());
+            }
+        }
+    }
 }
