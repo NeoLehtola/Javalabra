@@ -95,7 +95,9 @@ public class GUIPelilauta extends JPanel {
             
             if (peli.peliPaattynyt()) {
                 JOptionPane.showMessageDialog(null, "Jee, ratkaisit pelin! ^^ \n Pisteesi: " + peli.laskePisteet());
+                System.exit(0);
             }
+            
             
 
         }
