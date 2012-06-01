@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import sovelluslogiikka.Pelitapahtuma;
 import sovelluslogiikka.SiirtavaPelilauta;
@@ -14,12 +15,14 @@ public class GUIPelilauta extends JPanel {
 
     private JButton nappi;
     private JLabel tyhja;
+    private JLabel vuorot;
     private Pelitapahtuma peli;
     private SiirtavaPelilauta pelilauta;
 
     public GUIPelilauta(Pelitapahtuma peli) {
         this.peli = peli;
         this.pelilauta = peli.getPelilauta();
+        this.vuorot = new JLabel(peli.getVuorojenMaara() + "");
         luoKomponentit();
     }
 
@@ -29,7 +32,7 @@ public class GUIPelilauta extends JPanel {
         GridLayout layout = new GridLayout(pelilauta.getKorkeus(), pelilauta.getLeveys());
         setLayout(layout);
         piirraNappulat();
- 
+        
         
     }
 
@@ -52,6 +55,13 @@ public class GUIPelilauta extends JPanel {
         }
     }
 
+    public JLabel getVuorot() {
+        return vuorot;
+    }
+    
+    
+ 
+
 
 
     /**
@@ -73,12 +83,19 @@ public class GUIPelilauta extends JPanel {
             if (!peli.peliPaattynyt()) {
                 if (peli.pelaaYksiVuoroJosSiirtoSallittu(korkeus, leveys)) {
                     peli.kasvataVuorojenMaaraa();
+                    vuorot.setText(peli.getVuorojenMaara() + "");
                 }
             }
+            
+
 
             pelilauta = peli.getPelilauta();
             piirraNappulat();
             validate();
+            
+            if (peli.peliPaattynyt()) {
+                JOptionPane.showMessageDialog(null, "Jee, ratkaisit pelin! ^^ \n Pisteesi: " + peli.laskePisteet());
+            }
             
 
         }

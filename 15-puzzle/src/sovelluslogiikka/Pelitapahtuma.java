@@ -65,7 +65,7 @@ public class Pelitapahtuma {
      */
     public int laskePisteet() {
         int nappuloidenMaara = pelilauta.getKorkeus() * pelilauta.getLeveys();
-        return (int) (Math.pow(nappuloidenMaara, 2) / vuorojenMaara) * 100;
+        return (int) ((Math.pow(nappuloidenMaara, 2) / vuorojenMaara) * 100);
     }
 
     public SiirtavaPelilauta getPelilauta() {
