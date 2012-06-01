@@ -82,6 +82,11 @@ public class Pelitapahtuma {
         return pelilauta.lautaValmis();
     }
 
+    /**
+     * peli tiedostoon talteen
+     * @param tiedostoNimi
+     * @throws Exception 
+     */
     public void tallennaPeli(String tiedostoNimi) throws Exception {
         PelinTallentaja tallentaja = new PelinTallentaja(this, tiedostoNimi);
         tallentaja.tallennaPeli();
