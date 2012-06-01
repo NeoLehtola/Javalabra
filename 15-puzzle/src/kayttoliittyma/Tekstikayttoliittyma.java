@@ -50,22 +50,32 @@ public class Tekstikayttoliittyma {
             }
         }
         
-//        System.out.println("Jos haluat keskeyttää pelin, paina x");
+        System.out.println("Jos haluat keskeyttää pelin, paina -1");
         while (true) {
             tulostaPelilauta();
+            System.out.println("Vuoroja " + peli.getVuorojenMaara());
+
+            int korkeus = kysyKorkeus();
+            int leveys = kysyLeveys();
             
+            if (korkeus == -1 || leveys == -1) {
+                kysytallennetaankoNykyinenPeli();
+                System.out.println("Peli tallennettu");
+                break;
+            }
             
-            if (peli.pelaaYksiVuoroJosSiirtoSallittu(kysyKorkeus(), kysyLeveys())) {
+            if (peli.pelaaYksiVuoroJosSiirtoSallittu(korkeus, leveys)) {
                 peli.kasvataVuorojenMaaraa();
             } else {
                 System.out.println("Siirto ei ole sallittu. Anna uusi sijainti.");
             }
             if (peli.peliPaattynyt()) {
+                System.out.println("Pisteet " + peli.laskePisteet());
                 break;
             }
         }
-        System.out.println("Vuoroja " + peli.getVuorojenMaara());
-        System.out.println("Pisteet " + peli.laskePisteet());
+
+        
 
     }
 
@@ -93,16 +103,18 @@ public class Tekstikayttoliittyma {
         if (peli == null) {
             System.out.println("Ei tallennettua peliä, luodaan uusi peli");
             luoUusiPeli();
-        }   
+        }
     }
+
     
-    // tämä muuttunee niin, että Tallentajaa ei käytetä suoraan vaan Pelitapahtuman kautta
-    private void tallennaNykyinenPeli() throws Exception {
-        PelinTallentaja tallentaja = new PelinTallentaja(peli, "src/sovelluslogiikka/Tallennus.txt");
-        tallentaja.tallennaPeli();
+    private void kysytallennetaankoNykyinenPeli() throws Exception {
+        System.out.println("Haluatko tallentaa pelin? 1 = kyllä, 2 = ei");
+        int valinta = lukija.nextInt();
+        if (valinta == 1) {
+            peli.tallennaPeli("src/sovelluslogiikka/Tallennus.txt");
+        }
+        
     }
-    
-  
 
     private int kysyKorkeus() {
         System.out.print("Anna siirrettävän korkeus: (0 - " + (peli.getPelilauta().getKorkeus() - 1) + ")");

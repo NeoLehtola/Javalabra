@@ -42,15 +42,7 @@ public class PelinTallentaja {
         // 
         pw.close();
     }
-    
-
-    
-    public void lataaTallennettuPeli() throws Exception {
-        Scanner lukija = new Scanner(file);
         
-    }
-    
-    
 
     public File getFile() {
         return file;

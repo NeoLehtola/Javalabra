@@ -3,19 +3,17 @@ package kayttoliittyma;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import sovelluslogiikka.Pelitapahtuma;
 
 public class GUIAloitusruutu extends JPanel {
 
-    private int koonAlaraja;
-    private int koonYlaraja;
-    private int korkeudenValinta = koonAlaraja;
-    private int leveydenValinta = koonAlaraja;
+
 
     public GUIAloitusruutu() {
-        this.koonAlaraja = 3;
-        this.koonYlaraja = 8;
+
         luoKomponentit();
     }
 
@@ -45,20 +43,7 @@ public class GUIAloitusruutu extends JPanel {
         return panel;
     }
 
-    private JPanel luoLaudanKoonValitsin() {
-        JPanel panel = new JPanel(new GridLayout(1, 2));
 
-
-        JButton korkeus = new JButton(koonAlaraja + "");
-        JButton leveys = new JButton(koonAlaraja + "");
-        korkeus.addActionListener(new KoonValitsinKuuntelija(korkeus));
-        leveys.addActionListener(new KoonValitsinKuuntelija(leveys));
-
-        panel.add(korkeus);
-        panel.add(leveys);
-
-        return panel;
-    }
     
     private JButton luoUusiGuiPelilauta() {
         JButton nappi = new JButton("Valmis");
@@ -66,28 +51,7 @@ public class GUIAloitusruutu extends JPanel {
         return nappi;
     }
 
-    // mites nuo valinnat otetaan tuosta talteen???
-    private class KoonValitsinKuuntelija implements ActionListener {
 
-        private JButton nappi;
-
-        KoonValitsinKuuntelija(JButton nappi) {
-            this.nappi = nappi;
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            int nro = Integer.parseInt(nappi.getText());
-            if (nro < koonYlaraja) {
-                nro++;
-                nappi.setText(nro + "");
-            }
-            // tälle metodille pitäis jotenkin saattaa tiedoksi, onko kyseessä korkeus vai leveys.
-            korkeudenValinta++;
-            
-            
-        }
-    }
 
     private class AlkuvalikonUusiPeliNapinKuuntelija implements ActionListener {
 
@@ -97,7 +61,7 @@ public class GUIAloitusruutu extends JPanel {
             JLabel label = new JLabel("vasen: korkeus, oikea: leveys");
             add(label);
 
-            add(luoLaudanKoonValitsin());
+            add(new GUILaudanKoonValintaRuutu());
             add(luoUusiGuiPelilauta());
             validate();
         }
@@ -107,10 +71,10 @@ public class GUIAloitusruutu extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            removeAll();
-            GUIPelilauta pelilauta = new GUIPelilauta(new Pelitapahtuma(korkeudenValinta, leveydenValinta, korkeudenValinta*leveydenValinta*1000));
-            add(pelilauta);
-            validate();
+//            removeAll();
+//            GUIPelilauta pelilauta = new GUIPelilauta(new Pelitapahtuma(korkeudenValinta, leveydenValinta, korkeudenValinta*leveydenValinta*1000));
+//            add(pelilauta);
+//            validate();
         }
         
     }

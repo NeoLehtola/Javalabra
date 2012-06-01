@@ -5,7 +5,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-import sovelluslogiikka.Pelitapahtuma;
+//import sovelluslogiikka.Pelitapahtuma;
 
 
 public class GUI implements Runnable {
@@ -25,14 +25,12 @@ public class GUI implements Runnable {
     }
     
     private void luoKomponentit(Container container) {
-        // jos tämä luokin aloitusruudun, joka sitten puolestaan luo annetun kokoisen pelilaudan
+               
+        GUIAloitusruutu aloitus = new GUIAloitusruutu();
+        container.add(aloitus);
         
-//        GUIAloitusruutu aloitus = new GUIAloitusruutu();
-
-//        container.add(aloitus);
-        
-        GUIPelilauta pelilauta = new GUIPelilauta(new Pelitapahtuma(4, 4, 10000));
-        container.add(pelilauta);
+//        GUIPelilauta pelilauta = new GUIPelilauta(new Pelitapahtuma(4, 4, 10000));
+//        container.add(pelilauta);
 
 
     }
