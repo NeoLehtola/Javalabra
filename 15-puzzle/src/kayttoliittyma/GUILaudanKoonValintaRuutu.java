@@ -40,7 +40,7 @@ public class GUILaudanKoonValintaRuutu extends JPanel {
         return panel;
     }
     
-        // mites nuo valinnat otetaan tuosta talteen???
+        // kannattaisiko tehdä omat kuuntelijat korkeus- ja leveysnapeille?
     private class KoonValitsinKuuntelija implements ActionListener {
 
         private JButton nappi;
@@ -51,6 +51,9 @@ public class GUILaudanKoonValintaRuutu extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
+            
+            
+            
             int nro = Integer.parseInt(nappi.getText());
             if (nro < koonYlaraja) {
                 nro++;
