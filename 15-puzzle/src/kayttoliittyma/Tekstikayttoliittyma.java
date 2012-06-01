@@ -2,7 +2,6 @@ package kayttoliittyma;
 
 import java.util.Scanner;
 import sovelluslogiikka.PelinLataaja;
-import sovelluslogiikka.PelinTallentaja;
 import sovelluslogiikka.Pelitapahtuma;
 
 public class Tekstikayttoliittyma {
